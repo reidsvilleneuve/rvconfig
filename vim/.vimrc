@@ -67,6 +67,7 @@ set nocompatible
 syntax on
 
 "Colors
+" https://github.com/blueshirts/darcula
 color darcula
 
 "Filetype-specific indent settings. TODO: .vim/indent
