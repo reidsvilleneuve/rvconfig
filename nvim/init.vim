@@ -6,6 +6,9 @@
 
 " --- Dein ---
 
+" For first see https://github.com/Shougo/dein.vim
+" This setup requires the install script there to point to ~/.nvimpkg
+
 " Required for Dein
 if &compatible
   set nocompatible
