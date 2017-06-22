@@ -93,7 +93,8 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 " --- NeoMake ---
 
-let g:neomake_javascript_enabled_makers = ['eslint', 'tslint', 'tsc']
+let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
+" let g:neomake_javascript_enabled_makers = ['eslint', 'tslint', 'tsc', 'jshint']
 autocmd! BufWritePost * Neomake
 
 " --- Emmet ---
@@ -252,6 +253,26 @@ call WindowEnterHighlight()
 " TODO: Figure out why this is being glitchy.
 "let g:netrw_liststyle= 3
 "
-" Copy current relative/full file path to system clipboard
+" --- Copy current relative/full file path to system clipboard ---
+
 nnoremap <silent> \c :let @*=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
 nnoremap <silent> \C :let @*=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
+
+" --- Disable mouse ---
+
+autocmd BufEnter * set mouse=
+
+" --- Relative line numbers ---
+
+set rnu
+
+" ---  Quicker window movement ---
+
+" NOTE: iTerm does not handle <C-h> properly - run this to work around:
+" infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+" tic $TERM.ti
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
