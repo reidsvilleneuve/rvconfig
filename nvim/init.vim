@@ -249,5 +249,9 @@ call WindowEnterHighlight()
 
 " --- Tree style netrw ---
 
-"Never mind. Glitchy.
+" TODO: Figure out why this is being glitchy.
 "let g:netrw_liststyle= 3
+"
+" Copy current relative/full file path to system clipboard
+nnoremap <silent> \c :let @*=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
+nnoremap <silent> \C :let @*=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
