@@ -20,26 +20,30 @@ if dein#load_state('~/.nvimpkg')
   call dein#begin('~/.nvimpkg')
 
   " Dein plugin
+
   call dein#add('~/.nvimpkg/repos/github.com/Shougo/dein.vim')
 
   " Plugins to add
-  call dein#add('blueshirts/darcula.git')
+
+  call dein#add('blueshirts/darcula.git') " Color scheme
   call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   call dein#add('ConradIrwin/vim-bracketed-paste.git')
-  call dein#add('editorconfig/editorconfig-vim.git')
-  call dein#add('jeffkreeftmeijer/vim-numbertoggle.git')
-  call dein#add('leafgarland/typescript-vim.git')
-  call dein#add('mattn/emmet-vim.git')
-  call dein#add('neomake/neomake.git')
+  call dein#add('derekwyatt/vim-scala.git') " Scala utility
+  call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
+  call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
+  call dein#add('leafgarland/typescript-vim.git') " Typescript utility
+  call dein#add('mattn/emmet-vim.git') " Emmet integration
+  call dein#add('neomake/neomake.git') " Lint, etc.
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/denite.nvim') " Fuzzy finding
+  call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
-  call dein#add('tpope/vim-fugitive.git')
-  call dein#add('tpope/vim-repeat.git')
-  call dein#add('tpope/vim-surround.git')
-  call dein#add('vim-airline/vim-airline-themes.git')
-  call dein#add('vim-airline/vim-airline.git')
+  call dein#add('ternjs/tern_for_vim.git') " JS improvements
+  call dein#add('tpope/vim-fugitive.git') " Git integration
+  call dein#add('tpope/vim-repeat.git') " Better '.' functionality
+  call dein#add('tpope/vim-surround.git') " Text object surrounding
+  call dein#add('vim-airline/vim-airline-themes.git') " Status bar
+  call dein#add('vim-airline/vim-airline.git') " Status bar
 
   call dein#end()
   call dein#save_state()
@@ -127,6 +131,23 @@ color darcula
 " --- Number Line Toggle ---
 
 let g:NumberToggleTrigger="<C-n>"
+
+" --- TernJS / TernJS-Deoplete ---
+
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+" Add extra filetypes - Not currently necessary - will uncomment if/when this is needed.
+" let g:tern#filetypes = [
+"                 \ 'jsx',
+"                 \ 'javascript.jsx',
+"                 \ 'vue',
+"                 \ ]
+
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 " ************* "
 "               "
