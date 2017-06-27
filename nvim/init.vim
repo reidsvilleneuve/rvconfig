@@ -289,7 +289,7 @@ set rnu
 
 " ---  Quicker window movement ---
 
-" NOTE: iTerm does not handle <C-h> properly - run this to work around:
+" NOTE: iTerm does not handle <C-h> properly - run this to work around if in OSX:
 " infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 " tic $TERM.ti
 
