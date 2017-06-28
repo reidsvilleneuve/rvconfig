@@ -149,6 +149,15 @@ let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 
+" --- Editorconfig ---
+
+" Requires cli install
+" - OSX: brew install editorconfig
+" This may change later - we will see.
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:EditorConfig_core_mode = 'external_command'
+
 " ************* "
 "               "
 " Misc Settings "
