@@ -6,7 +6,7 @@
 
 " --- Dein ---
 
-" For first see https://github.com/Shougo/dein.vim
+" For first run, see https://github.com/Shougo/dein.vim
 " This setup requires the install script there to point to ~/.nvimpkg
 
 " Required for Dein
@@ -44,6 +44,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-surround.git') " Text object surrounding
   call dein#add('vim-airline/vim-airline-themes.git') " Status bar
   call dein#add('vim-airline/vim-airline.git') " Status bar
+  call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
 
   call dein#end()
   call dein#save_state()
