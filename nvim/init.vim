@@ -59,6 +59,8 @@ if dein#check_install()
   call dein#install()
 endif
 
+" --- Denite ---
+
 " File_rec/git
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
@@ -188,7 +190,9 @@ set wildmenu
 
 " --- Expand %% to path of current file ---
 
+" This implementation broke. TODO: Figure out why:
 "cabbr <expr> %% expand('%:p:h')
+
 cabbr %% <C-R>=expand('%:p:h')<CR>
 
 " --- Tabs / two spaces toggle ---
@@ -199,7 +203,6 @@ cabbr %% <C-R>=expand('%:p:h')<CR>
 
 let my_tab=2
 
-set softtabstop=0
 execute "set shiftwidth=".my_tab
 execute "set softtabstop=".my_tab
 execute "set tabstop=".my_tab
@@ -299,7 +302,7 @@ set rnu
 
 " ---  Quicker window movement ---
 
-" NOTE: iTerm does not handle <C-h> properly - run this to work around if in OSX:
+" NOTE: iTerm does not handle <C-h> properly - run this to work around if in OSX and using iTerm:
 " infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 " tic $TERM.ti
 
