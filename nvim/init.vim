@@ -39,6 +39,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('ternjs/tern_for_vim.git') " JS improvements
+  call dein#add('tomlion/vim-solidity.git') " Solidity language syntax
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
@@ -102,6 +103,10 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
+
+let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
+let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
+
 autocmd! BufWritePost * Neomake
 
 " --- Emmet ---
@@ -137,6 +142,9 @@ let g:NumberToggleTrigger="<C-n>"
 
 " --- TernJS / TernJS-Deoplete ---
 
+" Requires cli install
+" - npm i -g tern
+
 " Use deoplete.
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
@@ -156,6 +164,7 @@ let g:tern#arguments = ["--persistent"]
 
 " Requires cli install
 " - OSX: brew install editorconfig
+" - Ubuntu: sudo apt install editorconfig
 " This may change later - we will see.
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
