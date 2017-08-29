@@ -1,3 +1,5 @@
+" TODO: Separate into multiple files and source them.
+
 " ************ "
 "              "
 " Plugin Setup "
@@ -30,10 +32,13 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('ConradIrwin/vim-bracketed-paste.git')
   call dein#add('derekwyatt/vim-scala.git') " Scala utility
   call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
+  call dein#add('HerringtonDarkholme/yats.vim.git') " Typescript highlighting
   call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
-  call dein#add('leafgarland/typescript-vim.git') " Typescript utility
   call dein#add('mattn/emmet-vim.git') " Emmet integration
+  call dein#add('mhartington/nvim-typescript') " Typescript improvements
   call dein#add('neomake/neomake.git') " Lint, etc.
+  call dein#add('pangloss/vim-javascript.git') " Javascript indent / highlighting
+  call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
   call dein#add('Shougo/denite.nvim') " Fuzzy finding
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
@@ -45,7 +50,6 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-surround.git') " Text object surrounding
   call dein#add('vim-airline/vim-airline-themes.git') " Status bar
   call dein#add('vim-airline/vim-airline.git') " Status bar
-  call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
 
   call dein#end()
   call dein#save_state()
@@ -102,6 +106,7 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 " --- NeoMake ---
 
 let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
+"let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
@@ -112,7 +117,7 @@ autocmd! BufWritePost * Neomake
 " --- Emmet ---
 
 let g:user_emmet_install_global = 0 "Enable only for HTML/CSS #1
-autocmd FileType html,css,html.twig EmmetInstall "Enable only for HTML/CSS/Twig #2
+autocmd FileType html,css,less,html.twig EmmetInstall "Enable only for HTML/CSS/Twig #2
 
 " --- Deoplete ---
 
@@ -169,6 +174,10 @@ let g:tern#arguments = ["--persistent"]
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:EditorConfig_core_mode = 'external_command'
+
+" --- Javascript ---
+
+let g:javascript_plugin_jsdoc = 1
 
 " ************* "
 "               "
@@ -319,3 +328,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" --- Quicker macro execution ---
+
+set lazyredraw

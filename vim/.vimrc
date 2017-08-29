@@ -115,9 +115,8 @@ set list
 autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
 
 "MQ - macro for commit messages
-let @q = "/MQWEBy3eggpIJIRA story: Ogg:nohA" " Main
-let @w = "/MQCONTy3eggpIJIRA story: Ogg:nohA" " Secondary
-let @e = "/MQ4yt-ggpIJIRA stories: 2F-xOgg:nohA" " Both / multiple - TODO: Test
+let @q = "/MQWEBy3eggpIJIRA story: Ogg:nohA" " Single
+let @w = "/MQv$?MQ3eyggoJIRA stories: 0:s/-MQ/ MQ/gk:nohO" " Multiple
 
 "%% -> current file directory in Command mode.
 cabbr <expr> %% expand('%:p:h')
