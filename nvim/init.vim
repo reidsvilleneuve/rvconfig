@@ -27,6 +27,8 @@ if dein#load_state('~/.nvimpkg')
 
   " Plugins to add
 
+  call dein#add('kburdett/vim-nuuid.git') " TEMP
+
   call dein#add('blueshirts/darcula.git') " Color scheme
   call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   call dein#add('ConradIrwin/vim-bracketed-paste.git')
@@ -109,8 +111,12 @@ let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
 "let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
+"Tsc
 let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
+j
+" Tslint
 let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
+let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', 'tslint.json']
 
 autocmd! BufWritePost * Neomake
 
