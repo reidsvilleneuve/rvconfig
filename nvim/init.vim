@@ -27,7 +27,7 @@ if dein#load_state('~/.nvimpkg')
 
   " Plugins to add
 
-  call dein#add('kburdett/vim-nuuid.git') " TEMP
+  call dein#add('kburdett/vim-nuuid.git') " TEMP - Generate a UUID.
 
   call dein#add('blueshirts/darcula.git') " Color scheme
   call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
@@ -116,7 +116,10 @@ let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
 j
 " Tslint
 let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
-let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', 'tslint.json']
+" --format verbose was stopping the linter from working in one instance.
+" TODO: Investigate.
+let g:neomake_typescript_tslint_args = ['%:p', $PWD .'/tslint.json']
+" let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', $PWD .'/tslint.json']
 
 autocmd! BufWritePost * Neomake
 
@@ -313,8 +316,8 @@ call WindowEnterHighlight()
 "
 " --- Copy current relative/full file path to system clipboard ---
 
-nnoremap <silent> \c :let @*=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
-nnoremap <silent> \C :let @*=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
+nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
+nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
 
 " --- Disable mouse ---
 
