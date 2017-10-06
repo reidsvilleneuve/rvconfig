@@ -95,6 +95,7 @@ export LESS='-R'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mgdb="mongod --dbpath ~/bin/mongodb/data/db"
 alias npm-exec='PATH=$(npm bin):$PATH'
+alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 
 export NVM_DIR="/Users/rvilleneuve16/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -121,6 +122,7 @@ GIT_PROMPT_EXECUTABLE="haskell"
 smiley="%(?,%{$fg[green]%}🐲%{$reset_color%},%{$fg[red]%}🙀%{$reset_color%})"
 
 # vim mode indicator in prompt (http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode)
+# Also: http://pawelgoscicki.com/archives/2012/09/vi-mode-indicator-in-zsh-prompt/
 vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
