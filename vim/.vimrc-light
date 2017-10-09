@@ -1,0 +1,105 @@
+"TODO: 
+
+"- See https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim
+"  for some tricks. (Only fuzzy finding path trick used here so far)
+
+"- Consider VERY light non-supported syntax plugins (Scala / Clojure?)
+
+" --- Vi compatibility is not important here ---
+set nocompatible
+
+" --- Syntax highlighting ---
+syntax on
+
+" --- Search ---
+set hlsearch " Highlight search terms
+set incsearch " Search while typing in search query
+
+" ---Tab settings ---
+" TODO: Implement tab- space toggle.
+set tabstop=2 shiftwidth=2 smarttab expandtab
+
+" --- Command line completion ---
+set wildmode=longest:list,full
+set wildmenu
+
+" ---Relative line numbers -  TODO: Implement toggle. ---
+set nu rnu
+
+" --- Easier buffer switching ---
+nnoremap \b :ls<cr>:b<space>
+
+" ---Buffer- only session save ---
+nnoremap <silent> \s :set sessionoptions=buffers<cr>:mksession!<cr>:echo "Session saved"<cr>
+nnoremap <silent> \l :so Session.vim<cr>:echo "Session loaded"<cr>
+
+" --- Stops ex mode ---
+nnoremap Q <nop>
+
+" --- Clear last search highlighting ---
+nnoremap <silent> <Space> :noh<cr>
+
+" --- Diff unsaved buffer with previously saved version ---
+nnoremap <silent> \d :w !diff % -<cr>
+
+" --- Show whitespace ---
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+
+" --- Spelling setup ---
+autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
+
+" ---MQ -  macro for commit messages ---
+let @q = "/MQWEBy3eggpIJIRA story: Ogg:nohA" " Single
+let @w = "/MQv$?MQ3eyggoJIRA stories: 0:s/-MQ/ MQ/gk:nohO" " Multiple
+
+" ---%% - > current file directory in Command mode. ---
+cabbr %% <C-R>=expand('%:p:h')<CR>
+
+" --- Quicker window movement ---
+" NOTE: iTerm does not handle <C-h> properly -  run this to work around if in OSX and using iTerm:
+" infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+" tic $TERM.ti
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" --- Quick visual mode 'macros' ---
+vnoremap \q :norm 
+
+" --- Stops <Esc> delay ---
+set ttimeoutlen=50
+
+" --- Copy current relative/full file path to system clipboard ---
+nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
+nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
+
+" --- Disable mouse ---
+
+autocmd BufEnter * set mouse=
+
+" --- Quicker macro execution ---
+set lazyredraw
+
+" --- Plugin on for netrw ---
+filetype plugin on
+
+" --- Fuzzy-finding ---
+" Provides tab-completion for all file-related tasks
+" Hit tab to :find by partial match
+" Use * to make it fuzzy
+set path+=**
+
+" --- Underline in insert mode ---
+autocmd InsertEnter,InsertLeave * set cul!
+
+" --- Indent on newline ---
+set autoindent
+
+" --- Better-than-default color ---
+colo industry
+
+" --- Simple status line ---
+set statusline+=%F\ %l\:%c
+set laststatus=2 " Always show status line
