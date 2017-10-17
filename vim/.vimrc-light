@@ -1,9 +1,14 @@
-"TODO: 
+" TODO: 
 
 "- See https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim
 "  for some tricks. (Only fuzzy finding path trick used here so far)
 
 "- Consider VERY light non-supported syntax plugins (Scala / Clojure?)
+
+" First run steps:
+
+" -Optional: Symlink rvconfig/vim/.vim-light/colors to ~/.vim/colors if
+"  Darcula is desired
 
 " --- Vi compatibility is not important here ---
 set nocompatible
@@ -97,8 +102,16 @@ autocmd InsertEnter,InsertLeave * set cul!
 " --- Indent on newline ---
 set autoindent
 
-" --- Better-than-default color ---
-colo industry
+" --- Colors ---
+
+try
+  " To keep things light, this colorscheme is kept in this repo. Update at:
+  " https://github.com/blueshirts/darcula
+  " TODO: If blueshirts starts updating this commonly, make this a git submodule to decrease maintenance
+  colo darcula
+catch /^Vim\%((\a\+)\)\=:E185/
+  colo industry
+endtry
 
 " --- Simple status line ---
 set statusline+=%F\ %l\:%c
