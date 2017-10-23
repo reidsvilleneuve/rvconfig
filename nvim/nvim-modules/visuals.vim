@@ -26,7 +26,7 @@ augroup END
 " TODO: Combine these functions:
 function! WindowEnterHighlight()
   set cul
-  set colorcolumn=121
+  set colorcolumn=80,121
 endfunction
 
 function! WindowLeaveHighlight()

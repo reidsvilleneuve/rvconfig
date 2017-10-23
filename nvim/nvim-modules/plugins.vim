@@ -31,6 +31,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('derekwyatt/vim-scala.git') " Scala utility
   call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
   call dein#add('HerringtonDarkholme/yats.vim.git') " Typescript highlighting
+  call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript') " Typescript improvements
