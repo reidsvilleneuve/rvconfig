@@ -105,7 +105,7 @@ set autoindent
 " --- Colors ---
 
 try
-  " To keep things light, this colorscheme is kept in this repo. Update at:
+  " To keep things simple, this colorscheme is kept in this repo. Update at:
   " https://github.com/blueshirts/darcula
   " TODO: If blueshirts starts updating this commonly, make this a git submodule to decrease maintenance
   colo darcula

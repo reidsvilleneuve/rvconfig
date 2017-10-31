@@ -202,6 +202,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# TODO: Clean this up (incl. line 206 and 212):
 export PATH=/Users/rvilleneuve16/.rvm/gems/ruby-2.3.3/bin:/Users/rvilleneuve16/.rvm/gems/ruby-2.3.3@global/bin:/Users/rvilleneuve16/.rvm/rubies/ruby-2.3.3/bin:/Users/rvilleneuve16/.nvm/versions/node/v6.2.1/bin:/Users/rvilleneuve16/bin:/Users/rvilleneuve16/bin/mongodb-osx-x86_64-2.6.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/rvilleneuve16/.rvm/bin:/Users/rvilleneuve16/.vimpkg/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/Users/rvilleneuve16/.rbenv/shims
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
 
