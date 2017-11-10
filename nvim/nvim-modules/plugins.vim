@@ -43,7 +43,6 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('ternjs/tern_for_vim.git') " JS improvements
-  call dein#add('tomlion/vim-solidity.git') " Solidity language syntax
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
@@ -95,7 +94,7 @@ call denite#custom#map(
 \ 'noremap'
 \)
 
-" Non-git file_rec. Commented out for now.
+" Non-git file_rec. Commented out for now because I prefer to find repo files.
 "nnoremap <C-p> :Denite file_rec<cr>
 
 " Recursive search. Not sure what this first one is.
@@ -104,8 +103,8 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 " --- NeoMake ---
 
-let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
-"let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 "Tsc
