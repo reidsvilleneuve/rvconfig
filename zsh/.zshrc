@@ -90,6 +90,7 @@ export NG_TARGET="--dev"
 alias copy="xclip -sel clip"
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias gp-new='git push --set-upstream origin $(current_branch)'
+alias hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 
 setxkbmap -option caps:swapcaps
 export KEYTIMEOUT=2

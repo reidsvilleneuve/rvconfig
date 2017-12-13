@@ -97,6 +97,7 @@ alias mgdb="mongod --dbpath ~/bin/mongodb/data/db"
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gp-new='git push --set-upstream origin $(current_branch)'
+alias hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 
 export NVM_DIR="/Users/rvilleneuve16/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

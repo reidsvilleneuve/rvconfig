@@ -104,8 +104,8 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 " --- NeoMake ---
 
-"let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
+"let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 "Eslint
@@ -183,7 +183,8 @@ let g:tern#arguments = ["--persistent"]
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:EditorConfig_core_mode = 'external_command'
-let g:EditorConfig_verbose = 1 " TEMP - currently debugging (not working)
+" Uncomment to debug:
+"let g:EditorConfig_verbose = 1
 
 " --- Javascript ---
 
