@@ -72,6 +72,7 @@ vnoremap \q :norm
 
 nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
 nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
+nnoremap <silent> \n :let @+=expand('%:t')<cr>:echo "Current file's name copied to system clipboard"<cr>
 
 " ---  Quicker window movement ---
 

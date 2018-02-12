@@ -88,7 +88,6 @@ nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to
 nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
 
 " --- Disable mouse ---
-
 autocmd BufEnter * set mouse=
 
 " --- Quicker macro execution ---
