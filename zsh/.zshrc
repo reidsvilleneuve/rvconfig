@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/reid/.oh-my-zsh
+  export ZSH=/home/reidvilleneuve/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -91,12 +91,17 @@ alias copy="xclip -sel clip"
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias gp-new='git push --set-upstream origin $(current_branch)'
 alias hard-gl='git fetch && git reset --hard origin/$(current_branch)'
+alias lvim='vim -u ~/rvconfig/vim/.vimrc-light'
 
 setxkbmap -option caps:swapcaps
 export KEYTIMEOUT=2
 export TERM="xterm-256color"
 
-[ -s "/home/reid/.jabba/jabba.sh" ] && source "/home/reid/.jabba/jabba.sh"
+#[ -s "/home/reid/.jabba/jabba.sh" ] && source "/home/reid/.jabba/jabba.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Nvm auto use on directory change
 # place this after nvm initialization!
@@ -120,5 +125,5 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/reid/.sdkman"
-[[ -s "/home/reid/.sdkman/bin/sdkman-init.sh" ]] && source "/home/reid/.sdkman/bin/sdkman-init.sh"
+#export SDKMAN_DIR="/home/reid/.sdkman"
+#[[ -s "/home/reid/.sdkman/bin/sdkman-init.sh" ]] && source "/home/reid/.sdkman/bin/sdkman-init.sh"
