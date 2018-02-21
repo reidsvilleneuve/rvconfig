@@ -1,0 +1,8 @@
+# TODO: Make these username agnostic, or put these in the .zshrc-system files
+export ZSH=/Users/rvilleneuve16/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+# TODO: Remove iterm2 assumption?
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# TODO: Do the same for linux rc
+
+source ~/rvconfig/zsh/shared-zshrc
