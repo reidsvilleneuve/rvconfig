@@ -1,33 +1,15 @@
-# TODO: Make these username agnostic, or put these in the .zshrc-system files
-  export ZSH=/home/reidvilleneuve/.oh-my-zsh
+# Linux first run deps:
+# - apt install xclip
 
-# TODO: Set this on other .zshrc-system
-# For DA
-export NG_ENV="heroku"
-export NG_TARGET="--dev"
+# TODO: Make these username agnostic, or put these in the .zshrc-system files
+export ZSH=/home/reidvilleneuve/.oh-my-zsh
 
 alias copy="xclip -sel clip"
+# TODO: Find a different solution for this (Too much config loss)
 alias lvim='vim -u ~/rvconfig/vim/.vimrc-light'
 
 setxkbmap -option caps:swapcaps
 export KEYTIMEOUT=2
 export TERM="xterm-256color"
 
-# TODO: Set this on other .zshrc-system
-#[ -s "/home/reid/.jabba/jabba.sh" ] && source "/home/reid/.jabba/jabba.sh"
-
-# TODO: Set this on other .zshrc-system
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Nvm auto use on directory change
-# place this after nvm initialization!
-
-# TODO: Set this on other .zshrc-system
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/home/reid/.sdkman"
-#[[ -s "/home/reid/.sdkman/bin/sdkman-init.sh" ]] && source "/home/reid/.sdkman/bin/sdkman-init.sh"
-
-# TODO: Implement this on other system
 source ~/rvconfig/zsh/shared-zshrc

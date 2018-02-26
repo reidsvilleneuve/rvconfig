@@ -1,5 +1,7 @@
-# Get this theme from https://github.com/caiogondim/bullet-train.zsh
-# Font may be needed too: https://github.com/powerline/fonts
+# Shared first run deps:
+# - Get the theme from https://github.com/caiogondim/bullet-train.zsh
+# - The font may be needed: https://github.com/powerline/fonts
+# - TODO: nvm installation
 
 # Env vars
 

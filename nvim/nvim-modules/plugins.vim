@@ -46,6 +46,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-surround.git') " Text object surrounding
   call dein#add('vim-airline/vim-airline-themes.git') " Status bar
   call dein#add('vim-airline/vim-airline.git') " Status bar
+  call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
 
   " YATS is commented out for now for vim-polyglot testing.:
   " call dein#add('HerringtonDarkholme/yats.vim.git') " Typescript highlighting
