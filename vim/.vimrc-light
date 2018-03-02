@@ -57,11 +57,6 @@ set list
 " --- Spelling setup ---
 autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
 
-" --- MQ -  macro for commit messages ---
-let @q = "/MQWEBy3eggpIJIRA story: Ogg:nohA" " Single
-let @w = "/MQv$?MQ3eyggoJIRA stories: 0:s/-MQ/ MQ/gk:nohO" " Multiple
-let @e = "OPR fix (Will be squashed before the merge)ja" " PR prefix
-
 " --- Git ---
 let @r = "j}kecf" " Fixup all commits in interactive rebase
 
