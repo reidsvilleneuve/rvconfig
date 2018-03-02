@@ -68,11 +68,12 @@ nnoremap <silent> \d :w !diff % -<cr>
 
 vnoremap \q :norm 
 "
-" --- Copy current relative/full file path to system clipboard ---
+" --- Copy current various common texts to system clipboard ---
 
 nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
 nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
 nnoremap <silent> \n :let @+=expand('%:t')<cr>:echo "Current file's name copied to system clipboard"<cr>
+nnoremap <silent> \N :let @+=fugitive#head()<cr>:echo "Current branch's name coped to system clipboard"<cr>
 
 " ---  Quicker window movement ---
 
