@@ -24,7 +24,7 @@ autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
 
 " TODO: Figure out why this is being glitchy.
 "let g:netrw_liststyle= 3
-"
+
 " --- Disable mouse ---
 
 autocmd BufEnter * set mouse=

@@ -2,13 +2,17 @@
 # - Get the theme from https://github.com/caiogondim/bullet-train.zsh
 # - The font may be needed: https://github.com/powerline/fonts
 # - TODO: nvm installation
+#
+# Bonus steps:
+# - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 
 # Env vars
 
 ZSH_THEME="bullet-train"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git vi-mode)
+# TODO: Check for syntax highlighting plugin in before attempting to load it
+plugins=(git vi-mode zsh-syntax-highlighting)
 
 export EDITOR=vim
 export VISUAL=vim
@@ -16,6 +20,7 @@ export VISUAL=vim
 # Sources
 
 source $ZSH/oh-my-zsh.sh
+# TODO: Ensure existence before attempting to load this:
 source ~/.system-zshrc # Non-repo computer-specific config
 
 # Aliases
@@ -23,14 +28,14 @@ source ~/.system-zshrc # Non-repo computer-specific config
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gp-new='git push --set-upstream origin $(current_branch)'
-alias hard-gl='git fetch && git reset --hard origin/$(current_branch)'
+alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 
 # Misc commands
 
 ulimit -n 2048
 bindkey -v
 
-# NVM autoload -- Slow. Enabled so that I don't forget to change versions.
+# NVM autoload -- Slow. Still enabled so that I don't forget to change versions.
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -53,8 +58,9 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Bullettrain override -- various removals for slow version fetching
+# Bullettrain overrides
 
+# Various removals to fix slow version fetching
 BULLETTRAIN_PROMPT_ORDER=(
   time
   status

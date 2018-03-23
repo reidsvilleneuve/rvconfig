@@ -31,6 +31,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
   call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
+  call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript') " Typescript improvements
   call dein#add('neomake/neomake.git') " Lint, etc.
