@@ -191,3 +191,8 @@ let g:EditorConfig_core_mode = 'external_command'
 " --- Javascript ---
 
 let g:javascript_plugin_jsdoc = 1
+
+" --- Polyglot ---
+
+" Allows us to see actual markdown text
+let g:vim_markdown_conceal = 0
