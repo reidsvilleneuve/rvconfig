@@ -17,12 +17,6 @@ plugins=(git vi-mode zsh-syntax-highlighting)
 export EDITOR=vim
 export VISUAL=vim
 
-# Sources
-
-source $ZSH/oh-my-zsh.sh
-# TODO: Ensure existence before attempting to load this:
-source ~/.system-zshrc # Non-repo computer-specific config
-
 # Aliases
 
 alias npm-exec='PATH=$(npm bin):$PATH'
@@ -35,7 +29,7 @@ alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 ulimit -n 2048
 bindkey -v
 
-# NVM autoload -- Slow. Still enabled so that I don't forget to change versions.
+# NVM autoload -- Slow. Enabled so that I don't forget to change versions.
 
 autoload -U add-zsh-hook
 load-nvmrc() {
