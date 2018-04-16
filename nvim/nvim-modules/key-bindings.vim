@@ -21,27 +21,34 @@ nnoremap <C-l> <C-w>l
 " set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " set shiftwidth=2 softtabstop=0 noexpandtab
 
-let my_tab=2
+let g:my_tab=2
 
-execute "set shiftwidth=".my_tab
-execute "set softtabstop=".my_tab
-execute "set tabstop=".my_tab
+execute "set shiftwidth=".g:my_tab
+execute "set softtabstop=".g:my_tab
+execute "set tabstop=".g:my_tab
 
 set expandtab
-"
-" allow toggling between local and default mode
+
+function! SetToTabs()
+  execute "set shiftwidth=".g:my_tab
+  set softtabstop=0
+  set noexpandtab
+  echo "Set to tabs."
+endfunction
+
+function! SetToSpaces()
+  execute "set shiftwidth=".g:my_tab
+  execute "set tabstop=".g:my_tab
+  execute "set softtabstop=".g:my_tab
+  set expandtab
+  echo "Set to spaces."
+endfunction
+
 function! TabToggle()
   if &expandtab
-    execute "set shiftwidth=".g:my_tab
-    set softtabstop=0
-    set noexpandtab
-    echo "Set to tabs."
+    call SetToTabs()
   else
-    execute "set shiftwidth=".g:my_tab
-    execute "set tabstop=".g:my_tab
-    execute "set softtabstop=".g:my_tab
-    set expandtab
-    echo "Set to spaces."
+    call SetToSpaces()
   endif
 endfunction
 

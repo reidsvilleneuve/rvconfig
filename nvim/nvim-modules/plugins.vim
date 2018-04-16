@@ -29,11 +29,12 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
+  call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
-  call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript') " Typescript improvements
+  call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('neomake/neomake.git') " Lint, etc.
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
@@ -41,6 +42,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/denite.nvim') " Fuzzy finding
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
+  call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
   call dein#add('ternjs/tern_for_vim.git') " JS improvements
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
@@ -196,3 +198,17 @@ let g:javascript_plugin_jsdoc = 1
 
 " Allows us to see actual markdown text
 let g:vim_markdown_conceal = 0
+
+" --- Neosnippits ---
+
+let g:neosnippet#disable_runtime_snippets={ '_' : 1 }
+let g:neosnippet#enable_snipmate_compatibility=1
+let g:neosnippet#snippets_directory=$HOME.'/.nvimpkg/repos/github.com/honza/vim-snippets/snippets'
+
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif

@@ -25,14 +25,14 @@ nnoremap \,fun :-1read ~/rvconfig/nvim-vim-shared/snippits/js-function.js<CR>f{=
 " --- Project vimrc ---
 
 function! LoadProjectVimrc()
-  let localVimrcPath = $PWD."/rvdev/vimrc"
+  let projectVimrcPath = $PWD."/rvdev/vimrc"
 
-  " Set ProjectVimWhitelist in .system-vimrc. It expects an array of strings
+  " Set ProjectVimrcWhitelist in .system-vimrc. It expects an array of strings
   " representing the absolute paths of whitelisted project folders.
-  if exists('g:ProjectVimWhitelist')
-        \&& !empty(glob(localVimrcPath))
-        \&& index(g:ProjectVimWhitelist, $PWD) >= 0
-    execute 'source '.localVimrcPath
+  if exists('g:ProjectVimrcWhitelist')
+      \&& !empty(glob(projectVimrcPath))
+      \&& index(g:ProjectVimrcWhitelist, $PWD) >= 0
+    execute 'source '.projectVimrcPath
     echomsg 'Project Vimrc loaded.'
   endif
 endfunction

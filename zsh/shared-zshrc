@@ -32,12 +32,12 @@ bindkey -v
 # NVM autoload -- Slow. Enabled so that I don't forget to change versions.
 
 autoload -U add-zsh-hook
-load-nvmrc() {
+load-project-locals() {
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
   if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+    local nvmrc_node_version="$(nvm version "$(cat "${nvmrc_path}")")"
 
     if [ "$nvmrc_node_version" = "N/A" ]; then
       nvm install
@@ -45,12 +45,23 @@ load-nvmrc() {
       nvm use
     fi
   elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
+    echo "Reverting to nvm default version..."
     nvm use default
   fi
+
+  # Export PROJECT_ZSHRC_WHITELIST in ~/.zshrc. It expects an array of
+  # strings representing the absolute paths of whitelisted project folders.
+  local current_directory="$(pwd)"
+  local local_zshrc_path="$current_directory/rvdev/zshrc"
+  if [ -f "$local_zshrc_path" ] \
+    && [[ "${PROJECT_ZSHRC_WHITELIST[@]}" =~ "$current_directory" ]];
+  then
+    source "$local_zshrc_path"
+    echo "Project zshrc loaded."
+  fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+add-zsh-hook chpwd load-project-locals
+load-project-locals
 
 # Bullettrain overrides
 
