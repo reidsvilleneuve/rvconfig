@@ -108,8 +108,7 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 " --- NeoMake ---
 
-let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
-"let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 "Eslint

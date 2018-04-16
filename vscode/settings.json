@@ -1,0 +1,43 @@
+{
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.dragAndDrop": false,
+    "explorer.enableDragAndDrop": false,
+    "vim.ignorecase": false,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.statusBarColorControl": true,
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["<Space>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":noh",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<C-h>"],
+            "after": ["<C-w>", "h"]
+        },
+        {
+            "before": ["<C-l>"],
+            "after": ["<C-w>", "l"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-w>", "j"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-w>", "k"]
+        }
+    ],
+    "window.zoomLevel": 0,
+    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 2
+}
