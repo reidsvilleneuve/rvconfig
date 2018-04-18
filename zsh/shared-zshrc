@@ -53,11 +53,13 @@ load-project-locals() {
   # strings representing the absolute paths of whitelisted project folders.
   local current_directory="$(pwd)"
   local local_zshrc_path="$current_directory/rvdev/zshrc"
-  if [ -f "$local_zshrc_path" ] \
-    && [[ "${PROJECT_ZSHRC_WHITELIST[@]}" =~ "$current_directory" ]];
-  then
-    source "$local_zshrc_path"
-    echo "Project zshrc loaded."
+  if [ -f "$local_zshrc_path" ]; then
+    if [[ "${PROJECT_ZSHRC_WHITELIST[@]}" =~ "$current_directory" ]]; then
+      source "$local_zshrc_path"
+      echo "Project zshrc loaded."
+    else
+      echo "Warning: Non-whitelisted project zshrc found for this directory."
+    fi
   fi
 }
 add-zsh-hook chpwd load-project-locals

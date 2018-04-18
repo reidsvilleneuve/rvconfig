@@ -29,11 +29,13 @@ function! LoadProjectVimrc()
 
   " Set ProjectVimrcWhitelist in .system-vimrc. It expects an array of strings
   " representing the absolute paths of whitelisted project folders.
-  if exists('g:ProjectVimrcWhitelist')
-      \&& !empty(glob(projectVimrcPath))
-      \&& index(g:ProjectVimrcWhitelist, $PWD) >= 0
-    execute 'source '.projectVimrcPath
-    echomsg 'Project Vimrc loaded.'
+  if exists('g:ProjectVimrcWhitelist') && !empty(glob(projectVimrcPath))
+    if index(g:ProjectVimrcWhitelist, $PWD) >= 0
+      execute 'source '.projectVimrcPath
+      echomsg 'Project Vimrc loaded.'
+    else
+      echomsg 'Warning: Non-whitelisted project vimrc found in this directory.'
+    endif
   endif
 endfunction
 

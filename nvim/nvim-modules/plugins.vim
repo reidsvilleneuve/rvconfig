@@ -211,3 +211,7 @@ xmap <C-j>     <Plug>(neosnippet_expand_target)
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" --- TypeScript ---
+
+set completeopt-=preview

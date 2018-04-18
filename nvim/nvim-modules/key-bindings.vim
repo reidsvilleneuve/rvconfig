@@ -56,7 +56,7 @@ nmap <F9> mz:execute TabToggle()<CR>'z
 
 " --- Easier buffer switching ---
 
-nnoremap \b :ls<cr>:b<space>
+nnoremap \bl :ls<cr>:b<space>
 
 " --- Buffer-only session save / load ---
 
