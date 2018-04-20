@@ -28,10 +28,8 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('blueshirts/darcula.git') " Color scheme
   call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
-  call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('irrationalistic/vim-tasks.git') " Todo list
-  call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript') " Typescript improvements
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
@@ -50,6 +48,9 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('vim-airline/vim-airline-themes.git') " Status bar
   call dein#add('vim-airline/vim-airline.git') " Status bar
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
+
+  " call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
+  " call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
 
   " YATS is commented out for now for vim-polyglot testing.:
   " call dein#add('HerringtonDarkholme/yats.vim.git') " Typescript highlighting

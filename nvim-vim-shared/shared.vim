@@ -25,7 +25,7 @@ nnoremap \,fun :-1read ~/rvconfig/nvim-vim-shared/snippits/js-function.js<CR>f{=
 " --- Project vimrc ---
 
 function! LoadProjectVimrc()
-  let projectVimrcPath = $PWD."/rvdev/vimrc"
+  let projectVimrcPath = $PWD."/.rvdev/vimrc"
 
   " Set ProjectVimrcWhitelist in .system-vimrc. It expects an array of strings
   " representing the absolute paths of whitelisted project folders.

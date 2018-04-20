@@ -52,7 +52,7 @@ load-project-locals() {
   # Export PROJECT_ZSHRC_WHITELIST in ~/.zshrc. It expects an array of
   # strings representing the absolute paths of whitelisted project folders.
   local current_directory="$(pwd)"
-  local local_zshrc_path="$current_directory/rvdev/zshrc"
+  local local_zshrc_path="$current_directory/.rvdev/zshrc"
   if [ -f "$local_zshrc_path" ]; then
     if [[ "${PROJECT_ZSHRC_WHITELIST[@]}" =~ "$current_directory" ]]; then
       source "$local_zshrc_path"
