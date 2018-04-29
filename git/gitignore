@@ -1,3 +1,4 @@
 .rvdev/
 Session.vim
 .todo
+.tern-project
