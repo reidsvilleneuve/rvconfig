@@ -28,3 +28,7 @@ autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
 " --- Disable mouse ---
 
 autocmd BufEnter * set mouse=
+
+" --- Backspace normalization ---
+
+set backspace=2

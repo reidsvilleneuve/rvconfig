@@ -121,3 +121,6 @@ endtry
 " --- Simple status line ---
 set statusline+=%F\ %l\:%c
 set laststatus=2 " Always show status line
+
+" --- Backspace normalization ---
+set backspace=2
