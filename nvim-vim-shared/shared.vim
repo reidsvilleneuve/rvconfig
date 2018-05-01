@@ -1,10 +1,6 @@
 " Keep everything here agnostic of any plugins -- machines that use
 " .vimrc-light may not have any running.
 
-" --- System-specific config ---
-" TODO: Check for file first to stop error messages if file is non-existent.
-source ~/.system-vimrc
-
 " --- Keybinds ---
 
 "Quick yanks to system clipboard
