@@ -3,8 +3,8 @@
 
 let g:RvDev_CurrentConfigType = 'full'
 
-for f in split(glob('~/rvconfig/nvim/nvim-modules/*.vim'), '\n')
-  exe 'source' f
+for file in split(glob('~/rvconfig/nvim/nvim-modules/*.vim'), '\n')
+  exe 'source' file
 endfor
 
 " --- Shared config ---

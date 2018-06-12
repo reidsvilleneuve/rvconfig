@@ -3,3 +3,4 @@ Session.vim
 .todo
 .tern-project
 .tern-port
+.DS_Store
