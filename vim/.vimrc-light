@@ -28,7 +28,7 @@ set hlsearch " Highlight search terms
 set incsearch " Search while typing in search query
 
 " ---Tab settings ---
-" TODO: Implement tab- space toggle.
+" TODO: Implement tab- space toggle?
 set tabstop=2 shiftwidth=2 smarttab expandtab
 
 " --- Command line completion ---
@@ -66,15 +66,6 @@ let @r = "j}kecf" " Fixup all commits in interactive rebase
 
 " ---%% - > current file directory in Command mode. ---
 cabbr %% <C-R>=expand('%:p:h')<CR>
-
-" --- Quicker window movement ---
-" NOTE: iTerm does not handle <C-h> properly -  run this to work around if in OSX and using iTerm:
-" infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-" tic $TERM.ti
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
 
 " --- Quick visual mode 'macros' ---
 vnoremap \q :norm 

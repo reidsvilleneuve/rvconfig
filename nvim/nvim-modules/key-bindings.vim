@@ -8,13 +8,6 @@
 
 nnoremap <silent> <Space> :noh<CR>
 
-" --- Easier window navigation ---
-
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-"
 " --- Tabs / two spaces toggle ---
 
 " Old implementation:
@@ -56,7 +49,7 @@ nmap <F9> mz:execute TabToggle()<CR>'z
 
 " --- Easier buffer switching ---
 
-nnoremap \bl :ls<cr>:b<space>
+nnoremap \bb :ls<cr>:b<space>
 
 " --- Buffer-only session save / load ---
 
@@ -84,7 +77,9 @@ nnoremap <silent> \N :let @+=fugitive#head()<cr>:echo "Current branch's name cop
 
 " ---  Quicker window movement ---
 
-" NOTE: iTerm does not handle <C-h> properly - run this to work around if in OSX and using iTerm:
+" NOTE: iTerm does not handle <C-h> properly in some cases - run this to work
+" around if in OSX, using iTerm, and <C-h> is not working:
+"
 " infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 " tic $TERM.ti
 

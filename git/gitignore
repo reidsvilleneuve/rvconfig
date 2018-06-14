@@ -4,3 +4,5 @@ Session.vim
 .tern-project
 .tern-port
 .DS_Store
+.ctags
+tags

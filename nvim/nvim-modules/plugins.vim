@@ -34,6 +34,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('mhartington/nvim-typescript') " Typescript improvements
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('neomake/neomake.git') " Lint, etc.
+  call dein#add('prettier/vim-prettier.git') " Auto-formatting
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
