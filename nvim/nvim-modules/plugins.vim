@@ -26,15 +26,12 @@ if dein#load_state('~/.nvimpkg')
   " Plugins to add
 
   call dein#add('blueshirts/darcula.git') " Color scheme
-  call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('mattn/emmet-vim.git') " Emmet integration
-  call dein#add('mhartington/nvim-typescript') " Typescript improvements
+  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'}) " Typescript improvements
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
-  call dein#add('neomake/neomake.git') " Lint, etc.
-  call dein#add('prettier/vim-prettier.git') " Auto-formatting
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
@@ -42,19 +39,24 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
-  call dein#add('ternjs/tern_for_vim.git') " JS improvements
+  call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
   call dein#add('vim-airline/vim-airline-themes.git') " Status bar
   call dein#add('vim-airline/vim-airline.git') " Status bar
+  call dein#add('w0rp/ale.git') " Multi-language linting
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
 
+  " Disabled while testing ALE:
+  " call dein#add('ternjs/tern_for_vim.git') " JS improvements
+  " call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
+  " call dein#add('neomake/neomake.git') " Lint, etc.
+  " call dein#add('prettier/vim-prettier.git') " Auto-formatting
+
+  " Disabled for bugs or nit issues:
   " call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
   " call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
-
-  " YATS is commented out for now for vim-polyglot testing.:
-  " call dein#add('HerringtonDarkholme/yats.vim.git') " Typescript highlighting
 
   call dein#end()
   call dein#save_state()
@@ -108,25 +110,27 @@ call denite#custom#map(
 "nnoremap \F :Denite -buffer-name=search%`bufnr('%')` line<CR>
 nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
-" --- NeoMake ---
+" " --- NeoMake ---
 
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
+" Commented out while testing ALE
 
-"Eslint
-"let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/eslint/bin/eslint.js'
-
-"Tsc
-let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
-
-" Tslint
-let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
-" --format verbose was stopping the linter from working in one instance.
-" TODO: Investigate.
-let g:neomake_typescript_tslint_args = ['%:p', $PWD .'/tslint.json']
-" let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', $PWD .'/tslint.json']
-
-autocmd! BufWritePost * Neomake
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
+"
+" "Eslint
+" "let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/eslint/bin/eslint.js'
+"
+" "Tsc
+" let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
+"
+" " Tslint
+" let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
+" " --format verbose was stopping the linter from working in one instance.
+" " TODO: Investigate.
+" let g:neomake_typescript_tslint_args = ['%:p', $PWD .'/tslint.json']
+" " let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', $PWD .'/tslint.json']
+"
+" autocmd! BufWritePost * Neomake
 
 " --- Emmet ---
 
@@ -161,23 +165,25 @@ nnoremap <silent> <C-n> :set nu rnu!<cr>
 
 " --- TernJS / TernJS-Deoplete ---
 
-" Requires cli install
-" - npm i -g tern
+" Commented out while testing ALE
 
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-
-" Add extra filetypes - Not currently necessary - will uncomment if/when this is needed.
-" let g:tern#filetypes = [
-"                 \ 'jsx',
-"                 \ 'javascript.jsx',
-"                 \ 'vue',
-"                 \ ]
-
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+" " Requires cli install
+" " - npm i -g tern
+"
+" " Use deoplete.
+" let g:tern_request_timeout = 1
+" let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+"
+" " Add extra filetypes - Not currently necessary - will uncomment if/when this is needed.
+" " let g:tern#filetypes = [
+" "                 \ 'jsx',
+" "                 \ 'javascript.jsx',
+" "                 \ 'vue',
+" "                 \ ]
+"
+" " Use tern_for_vim.
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]
 
 " --- Editorconfig ---
 
@@ -217,3 +223,7 @@ endif
 " --- TypeScript ---
 
 set completeopt-=preview
+
+" --- ALE ---
+
+nnoremap \af :ALEFix<cr>

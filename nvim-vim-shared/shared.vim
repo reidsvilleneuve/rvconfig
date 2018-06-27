@@ -8,7 +8,7 @@ nnoremap Y "+y
 nnoremap YY ^"+y$
 vnoremap Y "+y
 
-" --- Quicker window movement ---
+" Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly -  run this to work around if in OSX and using iTerm:
 " infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 " tic $TERM.ti
@@ -19,15 +19,17 @@ nnoremap <C-l> <C-w>l
 
 " --- Snippits ---
 
-" TODO: Remove repeated text
+function! SetSnippit(mapping, file, action)
+  execute "nnoremap \,".a:mapping." :-1read ~/rvconfig/nvim-vim-shared/snippits/".a:file."<CR>".a:action
+endfunction
 
 " Jasmine
-nnoremap \,des :-1read ~/rvconfig/nvim-vim-shared/snippits/jasmine-describe.js<CR>f(=a(2f'i
-nnoremap \,it :-1read ~/rvconfig/nvim-vim-shared/snippits/jasmine-it.js<CR>f(=a(2f'i
-nnoremap \,bfe :-1read ~/rvconfig/nvim-vim-shared/snippits/jasmine-beforeEach.js<CR>f(=a(o
+call SetSnippit("des", "jasmine-describe.js", "f(=%2f'i")
+call SetSnippit("it", "jasmine-it.js", "f(=%2f'i")
+call SetSnippit("bfe", "jasmine-before-each.js", "f(=%o")
 
 " JavaScript
-nnoremap \,fun :-1read ~/rvconfig/nvim-vim-shared/snippits/js-function.js<CR>f{=a{t(i
+call SetSnippit("fun", "js-function.js", "f{=a{t(i")
 
 " --- Project vimrc ---
 

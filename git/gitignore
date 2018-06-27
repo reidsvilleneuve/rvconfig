@@ -1,8 +1,14 @@
+# Vim / NeoVim
 .rvdev/
 Session.vim
 .todo
 .tern-project
 .tern-port
-.DS_Store
 .ctags
 tags
+
+# VSCode
+.vscode
+
+# OSX
+.DS_Store

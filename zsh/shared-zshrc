@@ -16,12 +16,14 @@ plugins=(git vi-mode zsh-syntax-highlighting)
 
 export EDITOR=vim
 export VISUAL=vim
+export RVDEV_PROJECT_ROOT="$HOME/repos"
 
 # Aliases
 
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gp-new='git push --set-upstream origin $(current_branch)'
+alias gtp='cd $RVDEV_PROJECT_ROOT'
 alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 
 # Misc commands
@@ -62,6 +64,10 @@ load-project-locals() {
   local current_directory="$(pwd)"
   local local_zshrc_path="$current_directory/.rvdev/zshrc"
   if [ -f "$local_zshrc_path" ]; then
+    # TODO: There is probably a better place for this:
+    export RVDEV_PROJECT_ROOT="$current_directory"
+    echo "Project directory set to $RVDEV_PROJECT_ROOT"
+
     if [[ "${PROJECT_ZSHRC_WHITELIST[@]}" =~ "$current_directory" ]]; then
       source "$local_zshrc_path"
       echo "Project zshrc loaded."

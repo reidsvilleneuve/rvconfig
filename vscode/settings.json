@@ -9,9 +9,20 @@
     "vim.hlsearch": true,
     "vim.incsearch": true,
     "vim.statusBarColorControl": true,
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "window.zoomLevel": 0,
+    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": ["<Space>"],
+            "before": [
+                "<Space>"
+            ],
             "after": [],
             "commands": [
                 {
@@ -21,25 +32,62 @@
             ]
         },
         {
-            "before": ["<C-h>"],
-            "after": ["<C-w>", "h"]
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
         },
         {
-            "before": ["<C-l>"],
-            "after": ["<C-w>", "l"]
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
         },
         {
-            "before": ["<C-j>"],
-            "after": ["<C-w>", "j"]
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
         },
         {
-            "before": ["<C-k>"],
-            "after": ["<C-w>", "k"]
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
         }
     ],
-    "window.zoomLevel": 0,
-    "files.autoSave": "onFocusChange",
-    "editor.tabSize": 2,
-    "files.trimTrailingWhitespace": true,
-    "editor.renderWhitespace": "boundary"
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        }
+    ]
 }
