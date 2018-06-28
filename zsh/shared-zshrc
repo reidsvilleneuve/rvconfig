@@ -16,7 +16,7 @@ plugins=(git vi-mode zsh-syntax-highlighting)
 
 export EDITOR=vim
 export VISUAL=vim
-export RVDEV_PROJECT_ROOT="$HOME/repos"
+export RVDEV_PROJECT_ROOT="$HOME"
 
 # Aliases
 
@@ -72,7 +72,7 @@ load-project-locals() {
       source "$local_zshrc_path"
       echo "Project zshrc loaded."
     else
-      echo "Warning: Non-whitelisted project zshrc found for this directory."
+      echo "Warning: Non-whitelisted project zshrc found for this directory. ($current_directory)"
     fi
   fi
 }

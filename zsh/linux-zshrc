@@ -1,8 +1,7 @@
 # Linux first run deps:
 # - apt install xclip
 
-# TODO: Move this to root zshrc
-export ZSH=/home/reidvilleneuve/.oh-my-zsh
+source ~/rvconfig/zsh/shared-zshrc
 
 alias copy="xclip -sel clip"
 # TODO: Find a different solution for this (Too much config loss)
@@ -11,5 +10,3 @@ alias lvim='vim -u ~/rvconfig/vim/.vimrc-light'
 setxkbmap -option caps:swapcaps
 export KEYTIMEOUT=2
 export TERM="xterm-256color"
-
-source ~/rvconfig/zsh/shared-zshrc
