@@ -6,6 +6,7 @@ Session.vim
 .tern-port
 .ctags
 tags
+.orig
 
 # VSCode
 .vscode
