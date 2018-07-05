@@ -12,7 +12,7 @@ ZSH_THEME="bullet-train"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 # TODO: Check for syntax highlighting plugin in before attempting to load it
-plugins=(git vi-mode zsh-syntax-highlighting)
+plugins=(git vi-mode zsh-syntax-highlighting tmux)
 
 export EDITOR=vim
 export VISUAL=vim

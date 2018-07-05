@@ -6,5 +6,6 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+	prompt = true
 [rerere]
 	enabled = 1
