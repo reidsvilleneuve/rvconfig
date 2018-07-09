@@ -1,12 +1,18 @@
 " Keep everything here agnostic of any plugins -- machines that use
 " .vimrc-light may not have any running.
 
+" --- Color ---
+
+set t_Co=256
+
 " --- Keybinds ---
 
-"Quick yanks to system clipboard
+"Quick yanks and pastes to system clipboard
 nnoremap Y "+y
 nnoremap YY ^"+y$
 vnoremap Y "+y
+nnoremap P "+p
+vnoremap P "+p
 
 " Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly -  run this to work around if in OSX and using iTerm:
