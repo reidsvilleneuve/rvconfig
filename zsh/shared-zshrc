@@ -7,7 +7,8 @@
 # - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 
 # Env vars
-
+IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
+set -o ignoreeof  # In case above command doens't work
 ZSH_THEME="bullet-train"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
