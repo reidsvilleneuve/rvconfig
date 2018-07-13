@@ -83,12 +83,9 @@ load-project-locals
 
 # Various removals to fix slow version fetching
 BULLETTRAIN_PROMPT_ORDER=(
-  time
   status
   custom
-  context
   dir
-  screen
   git
   cmd_exec_time
 )

@@ -11,8 +11,9 @@ set t_Co=256
 nnoremap Y "+y
 nnoremap YY ^"+y$
 vnoremap Y "+y
-nnoremap P "+p
-vnoremap P "+p
+nnoremap \P "+P
+nnoremap \p "+p
+vnoremap \p "+p
 
 " Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly -  run this to work around if in OSX and using iTerm:

@@ -64,9 +64,11 @@ nnoremap Q <nop>
 
 nnoremap <silent> \d :w !diff % -<cr>
 
-" ---  Quick visual mode 'macros' ---
+" ---  Quick range normal mode execution ---
 
-vnoremap \q :norm 
+" Assume norm for visual mode, since range comes for free
+vnoremap \Q :norm 
+nnoremap \q :'m,.
 "
 " --- Copy current various common texts to system clipboard ---
 
