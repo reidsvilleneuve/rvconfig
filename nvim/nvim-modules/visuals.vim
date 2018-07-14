@@ -16,7 +16,7 @@ set incsearch " Search while typing in search query
 
 " ---  Set visuals of active window ---
 
-set cul
+set cursorline
 augroup BgHighlight
   autocmd!
   autocmd WinEnter * call WindowEnterHighlight()
@@ -25,12 +25,12 @@ augroup END
 
 " TODO: Combine these functions:
 function! WindowEnterHighlight()
-  set cul
+  set cursorline
   set colorcolumn=80,120
 endfunction
 
 function! WindowLeaveHighlight()
-  set nocul
+  set nocursorline
   set colorcolumn=0
 endfunction
 
@@ -38,7 +38,7 @@ call WindowEnterHighlight()
 
 " --- Relative line numbers ---
 
-set nu rnu
+set number relativenumber
 
 " --- Quicker macro execution ---
 

@@ -58,8 +58,19 @@ nnoremap <silent> \d :w !diff % -<cr>
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 
-" --- Spelling setup ---
-autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
+" --- Automatic commands ---
+augroup BufFileActions
+  autocmd!
+
+  " Spelling setup
+  autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
+
+  " Disable mouse
+  autocmd BufEnter,BufNewFile * set mouse=
+
+  " Underline in insert mode
+  autocmd InsertEnter,InsertLeave * set cul!
+augroup END
 
 " --- Git ---
 let @r = "j}kecf" " Fixup all commits in interactive rebase
@@ -77,9 +88,6 @@ set ttimeoutlen=50
 nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
 nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
 
-" --- Disable mouse ---
-autocmd BufEnter * set mouse=
-
 " --- Quicker macro execution ---
 set lazyredraw
 
@@ -91,9 +99,6 @@ filetype plugin on
 " Hit tab to :find by partial match
 " Use * to make it fuzzy
 set path+=**
-
-" --- Underline in insert mode ---
-autocmd InsertEnter,InsertLeave * set cul!
 
 " --- Indent on newline ---
 set autoindent

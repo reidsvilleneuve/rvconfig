@@ -9,11 +9,6 @@
 " For first run, see https://github.com/Shougo/dein.vim
 " This setup requires the install script there to point to ~/.nvimpkg
 
-" Required for Dein
-if &compatible
-  set nocompatible
-endif
-
 set runtimepath+=~/.nvimpkg/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.nvimpkg')
@@ -30,7 +25,6 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('mattn/emmet-vim.git') " Emmet integration
-  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'}) " Typescript improvements
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
@@ -53,6 +47,7 @@ if dein#load_state('~/.nvimpkg')
   " call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
   " call dein#add('neomake/neomake.git') " Lint, etc.
   " call dein#add('prettier/vim-prettier.git') " Auto-formatting
+  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'}) " Typescript improvements
 
   " Disabled for bugs or nit issues:
   " call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
@@ -191,15 +186,14 @@ nnoremap <silent> <C-n> :set nu rnu!<cr>
 " - OSX: brew install editorconfig
 " - Ubuntu: sudo apt install editorconfig
 " This may change later - we will see.
-
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-let g:EditorConfig_core_mode = 'external_command'
+" let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+" let g:EditorConfig_core_mode = 'external_command'
 " Uncomment to debug:
 "let g:EditorConfig_verbose = 1
 
 " --- Javascript ---
 
-let g:javascript_plugin_jsdoc = 1
+" let g:javascript_plugin_jsdoc = 1
 
 " --- Polyglot ---
 

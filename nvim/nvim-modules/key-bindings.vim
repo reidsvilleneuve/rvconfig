@@ -45,7 +45,7 @@ function! TabToggle()
   endif
 endfunction
 
-nmap <F9> mz:execute TabToggle()<CR>'z
+nnoremap <F9> mz:execute TabToggle()<CR>'z
 
 " --- Easier buffer switching ---
 
