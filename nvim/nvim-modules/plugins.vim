@@ -20,12 +20,11 @@ if dein#load_state('~/.nvimpkg')
 
   " Plugins to add
 
-  call dein#add('blueshirts/darcula.git') " Color scheme
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
-  call dein#add('irrationalistic/vim-tasks.git') " Todo list
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
+  call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
@@ -37,21 +36,8 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
-  call dein#add('vim-airline/vim-airline-themes.git') " Status bar
-  call dein#add('vim-airline/vim-airline.git') " Status bar
   call dein#add('w0rp/ale.git') " Multi-language linting
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
-
-  " Disabled while testing ALE:
-  " call dein#add('ternjs/tern_for_vim.git') " JS improvements
-  " call dein#add('carlitux/deoplete-ternjs.git') " Deoplete utility
-  " call dein#add('neomake/neomake.git') " Lint, etc.
-  " call dein#add('prettier/vim-prettier.git') " Auto-formatting
-  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'}) " Typescript improvements
-
-  " Disabled for bugs or nit issues:
-  " call dein#add('jeffkreeftmeijer/vim-numbertoggle.git') " Relative <--> Abs line numbers
-  " call dein#add('editorconfig/editorconfig-vim.git') " .editorconfig support
 
   call dein#end()
   call dein#save_state()
@@ -98,34 +84,8 @@ call denite#custom#map(
 \ 'noremap'
 \)
 
-" Non-git file_rec. Commented out for now because I prefer to find repo files.
-"nnoremap <C-p> :Denite file_rec<cr>
-
-" Recursive search. Not sure what this first one is.
-"nnoremap \F :Denite -buffer-name=search%`bufnr('%')` line<CR>
+" Recursive search.
 nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
-
-" " --- NeoMake ---
-
-" Commented out while testing ALE
-
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
-"
-" "Eslint
-" "let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/eslint/bin/eslint.js'
-"
-" "Tsc
-" let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/typescript/bin/tsc'
-"
-" " Tslint
-" let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/tslint/bin/tslint'
-" " --format verbose was stopping the linter from working in one instance.
-" " TODO: Investigate.
-" let g:neomake_typescript_tslint_args = ['%:p', $PWD .'/tslint.json']
-" " let g:neomake_typescript_tslint_args = ['%:p', '--format verbose', $PWD .'/tslint.json']
-"
-" autocmd! BufWritePost * Neomake
 
 " --- Emmet ---
 
@@ -146,54 +106,14 @@ function! s:check_back_space() abort "{{{
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction "}}}
 
-" --- Airline themes ---
+" --- PaperColor Theme ---
 
-let g:airline_powerline_fonts = 1
-
-" --- Darcula color ---
-
-color darcula
+set background=dark
+colorscheme PaperColor
 
 " --- Number Line Toggle ---
 
 nnoremap <silent> <C-n> :set nu rnu!<cr>
-
-" --- TernJS / TernJS-Deoplete ---
-
-" Commented out while testing ALE
-
-" " Requires cli install
-" " - npm i -g tern
-"
-" " Use deoplete.
-" let g:tern_request_timeout = 1
-" let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-"
-" " Add extra filetypes - Not currently necessary - will uncomment if/when this is needed.
-" " let g:tern#filetypes = [
-" "                 \ 'jsx',
-" "                 \ 'javascript.jsx',
-" "                 \ 'vue',
-" "                 \ ]
-"
-" " Use tern_for_vim.
-" let g:tern#command = ["tern"]
-" let g:tern#arguments = ["--persistent"]
-
-" --- Editorconfig ---
-
-" Requires cli install
-" - OSX: brew install editorconfig
-" - Ubuntu: sudo apt install editorconfig
-" This may change later - we will see.
-" let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-" let g:EditorConfig_core_mode = 'external_command'
-" Uncomment to debug:
-"let g:EditorConfig_verbose = 1
-
-" --- Javascript ---
-
-" let g:javascript_plugin_jsdoc = 1
 
 " --- Polyglot ---
 

@@ -7,7 +7,7 @@ set t_Co=256
 
 " --- Keybinds ---
 
-"Quick yanks and pastes to system clipboard
+" Quick yanks and pastes to system clipboard
 nnoremap Y "+y
 nnoremap YY ^"+y$
 vnoremap Y "+y
@@ -63,3 +63,8 @@ function! LoadProjectVimrc()
 endfunction
 
 autocmd VimEnter * call LoadProjectVimrc()
+
+" --- Status line ---
+"
+set statusline=%F\ %=%l\:%c
+set laststatus=2 " Always show status line
