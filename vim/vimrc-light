@@ -1,0 +1,38 @@
+" TODO: 
+
+"  See https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim for
+"  some tricks. I'm considering some VERY light non-supported syntax plugins
+"  (Scala / Clojure?)
+
+" First run steps:
+" - Optional: Symlink rvconfig/vim/.vim-light/colors to ~/.vim-light/colors if
+"   Darcula is desired
+
+" --- Options ---
+
+let g:RvDev_CurrentConfigType = 'light'
+
+" --- Shared config ---
+source ~/rvconfig/nvim-vim-shared/shared.vim
+
+" --- Git ---
+let @r = "j}kecf" " Fixup all commits in interactive rebase
+
+" --- Stops <Esc> delay ---
+set ttimeoutlen=50
+
+" --- Fuzzy-finding ---
+" Provides tab-completion for all file-related tasks
+" Hit tab to :find by partial match
+" Use * to make it fuzzy
+set path+=**
+
+" --- Colors ---
+try
+  " To keep things simple, this colorscheme is kept in this repo. Update at:
+  " https://github.com/blueshirts/darcula
+  " TODO: If blueshirts starts updating this commonly, make this a git submodule to decrease maintenance
+  colo darcula
+catch /^Vim\%((\a\+)\)\=:E185/
+  colo industry
+endtry
