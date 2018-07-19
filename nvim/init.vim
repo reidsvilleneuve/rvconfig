@@ -1,5 +1,13 @@
 source ~/rvconfig/nvim-vim-shared/shared.vim
 
+" ********** "
+"            "
+" Misc Setup "
+"            "
+" ********** "
+
+set inccommand=split " Preview replacements in a split
+
 " ************ "
 "              "
 " Plugin Setup "
@@ -25,10 +33,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('mattn/emmet-vim.git') " Emmet integration
-  call dein#add('mhartington/nvim-typescript', {
-    \'rev': 'next-node',
-    \'build': 'cd rplugin/node/nvim_typescript && npm install --production'
-  \}) " Typescript improvements -- new node version (faster)
+  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
