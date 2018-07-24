@@ -144,6 +144,7 @@ augroup AutoActions
   autocmd VimEnter * call LoadProjectVimrc()
   autocmd WinEnter * call WindowEnterHighlight()
   autocmd WinLeave * call WindowLeaveHighlight()
+  autocmd FileType netrw setl bufhidden=delete "Stops netrw uncloseable bug
 augroup END
 
 " --- Visuals ---

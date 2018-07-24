@@ -77,6 +77,8 @@ call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
+call denite#custom#source(
+\ 'grep', 'matchers', ['matcher_regexp'])
 
 "Key mappings
 call denite#custom#map(
@@ -92,8 +94,13 @@ call denite#custom#map(
   \ 'noremap'
   \)
 
-" Recursive search.
+" Recursive search
 nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
+
+" Interactive recursive search with quickfix
+" https://gist.github.com/dlants/8d7fadfb691b511f1376ba437a9aaea9
+" Tag with <C-o> + */Space, and use with :cdo for project-wide actions
+map \F :DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!<CR>
 
 " --- Emmet ---
 
@@ -113,10 +120,10 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ deoplete#mappings#manual_complete()
 
-function! s:check_back_space() abort "{{{
+function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
-endfunction "}}}
+endfunction
 
 " --- PaperColor Theme ---
 
