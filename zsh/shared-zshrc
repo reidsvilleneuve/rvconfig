@@ -18,6 +18,8 @@ alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gp-new='git push --set-upstream origin $(current_branch)'
 alias gtp='cd $RVDEV_PROJECT_ROOT'
 alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
+alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
+alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand'
 
 # Misc commands
 

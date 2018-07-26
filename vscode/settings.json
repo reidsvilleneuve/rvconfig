@@ -89,5 +89,6 @@
                 "y"
             ]
         }
-    ]
+    ],
+    "workbench.iconTheme": "material-icon-theme"
 }
