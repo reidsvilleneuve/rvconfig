@@ -1,3 +1,4 @@
+let g:RvDev_CurrentConfigType = 'full'
 source ~/rvconfig/nvim-vim-shared/shared.vim
 
 " ********** "

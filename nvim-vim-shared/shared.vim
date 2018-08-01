@@ -1,6 +1,31 @@
 " Keep everything here agnostic of any plugins -- machines that use
 " .vimrc-light may not have any running.
 
+" --- Non-keybinded functions ---
+
+function! InsertStoryText(storyPrefix)
+  " Copy first instance of git branch name containing story text to top
+  execute '1 | /'.a:storyPrefix.'-\d/copy 0'
+  " Remove non-story number text
+  execute 'normal dn$N2f-D'
+endfunction
+
+function! GitMessageHeader(storyPrefix)
+  execute InsertStoryText(a:storyPrefix)
+  " Parse story text line
+  execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
+  " Insert : and space at end of line
+  execute 'normal A: '
+endfunction
+
+function! GitMessageBody(storyPrefix)
+  execute InsertStoryText(a:storyPrefix)
+  " Parse story text line
+  execute 's/-'.a:storyPrefix.'/\r'.a:storyPrefix.'/ge'
+  " Add new lines at top of the file
+  execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O" | 1
+endfunction
+
 " --- Keybinds ---
 
 " Tabs / two spaces toggle
@@ -46,6 +71,9 @@ vnoremap \p "+p
 
 " Quick edit current expanded directory
 nnoremap \e :e <C-R>=expand('%:p:h')<CR>/
+
+" Quick edit file path in system clipboard
+nnoremap \E :e <C-R>=expand(@+)<CR><CR>
 
 " Easier buffer switching
 nnoremap \bb :ls<cr>:b<space>
@@ -177,8 +205,11 @@ set wildmenu
 " Expand %% to path of current file
 cabbrev %% <C-R>=expand('%:p:h')<CR>
 
-set hlsearch " Highlight search terms
-set incsearch " Search while typing in search query
+" Highlight search terms
+set hlsearch
+"
+" Search while typing in search query
+set incsearch
 
 " Quicker macro execution
 set lazyredraw

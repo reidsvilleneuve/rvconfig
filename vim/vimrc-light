@@ -1,4 +1,4 @@
-" TODO: 
+" TODO:
 
 "  See https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim for
 "  some tricks. I'm considering some VERY light non-supported syntax plugins
@@ -16,7 +16,8 @@ let g:RvDev_CurrentConfigType = 'light'
 source ~/rvconfig/nvim-vim-shared/shared.vim
 
 " --- Git ---
-let @r = "j}kecf" " Fixup all commits in interactive rebase
+" Fixup all commits in interactive rebase
+let @r = "j}kecf"
 
 " --- Stops <Esc> delay ---
 set ttimeoutlen=50
