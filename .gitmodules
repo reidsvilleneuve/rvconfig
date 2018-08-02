@@ -1,0 +1,3 @@
+[submodule "vim/vim-light/pack/default/start/vim-polyglot"]
+	path = vim/vim-light/pack/default/start/vim-polyglot
+	url = git@github.com:sheerun/vim-polyglot.git
