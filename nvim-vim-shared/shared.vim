@@ -76,17 +76,17 @@ nnoremap \e :e <C-R>=expand('%:p:h')<CR>/
 nnoremap \E :e <C-R>=expand(@+)<CR><CR>
 
 " Easier buffer switching
-nnoremap \bb :ls<cr>:b<space>
+nnoremap \bb :ls<CR>:b<space>
 
 " Bufferonly session save / load
-nnoremap <silent> \s :set sessionoptions=buffers<cr>:mksession!<cr>:echo "Session saved"<cr>
-nnoremap <silent> \l :so Session.vim<cr>:echo "Session loaded"<cr>
+nnoremap <silent> \s :set sessionoptions=buffers<CR>:mksession!<CR>:echo "Session saved"<CR>
+nnoremap <silent> \l :so Session.vim<CR>:echo "Session loaded"<CR>
 
 " Stops ex mode
 nnoremap Q <nop>
 
 " Diff unsaved buffer with previously saved version
-nnoremap <silent> \d :w !diff % -<cr>
+nnoremap <silent> \d :w !diff % -<CR>
 
 " Quick range normal mode execution
 " Assume norm for visual mode, since range comes for free
@@ -94,9 +94,9 @@ vnoremap \Q :norm
 nnoremap \q :'m,.
 
 " Copy current various common texts to system clipboard
-nnoremap <silent> \c :let @+=@%<cr>:echo "Current file's relative path copied to system clipboard"<cr>
-nnoremap <silent> \C :let @+=expand('%:p')<cr>:echo "Current file's full path copied to system clipboard"<cr>
-nnoremap <silent> \n :let @+=expand('%:t')<cr>:echo "Current file's name copied to system clipboard"<cr>
+nnoremap <silent> \c :let @+=@%<CR>:echo "Current file's relative path copied to system clipboard"<CR>
+nnoremap <silent> \C :let @+=expand('%:p')<CR>:echo "Current file's full path copied to system clipboard"<CR>
+nnoremap <silent> \n :let @+=expand('%:t')<CR>:echo "Current file's name copied to system clipboard"<CR>
 
 " Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly in some cases - run this to work
@@ -112,8 +112,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <Space> :noh<CR>
 
 " Number Line Toggle
-nnoremap <silent> <C-n> :set number relativenumber!<cr>
+nnoremap <silent> <C-n> :set number relativenumber!<CR>
 set number relativenumber
+
+" Open VSCode on current file
+nnoremap \X :!code -g <C-r>=expand('%:p')<CR>:<C-r>=line('.')<CR>:<C-r>=col('.')<CR><CR>
 
 " --- Snippits ---
 
@@ -125,6 +128,10 @@ endfunction
 call SetSnippit("des", "jasmine-describe.js", "f(=%2f'i")
 call SetSnippit("it", "jasmine-it.js", "f(=%2f'i")
 call SetSnippit("bfe", "jasmine-before-each.js", "f(=%o")
+
+call SetSnippit("ldes", "jasmine-describe-lambda.js", "f(=%f'a")
+call SetSnippit("lit", "jasmine-it-lambda.js", "f(=%2f'i")
+call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 
 " JavaScript
 call SetSnippit("fun", "js-function.js", "f{=a{t(i")

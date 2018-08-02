@@ -146,9 +146,9 @@ let g:neosnippet#disable_runtime_snippets={ '_' : 1 }
 let g:neosnippet#enable_snipmate_compatibility=1
 let g:neosnippet#snippets_directory=$HOME.'/.nvimpkg/repos/github.com/honza/vim-snippets/snippets'
 
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
+imap <C-j> <Plug>(neosnippet_expand_or_jump)
+smap <C-j> <Plug>(neosnippet_expand_or_jump)
+xmap <C-j> <Plug>(neosnippet_expand_target)
 
 if has('conceal')
   set conceallevel=2 concealcursor=niv
