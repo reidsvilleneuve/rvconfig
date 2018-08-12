@@ -3,6 +3,10 @@
 
 " --- Non-keybinded functions ---
 
+" Quick git messages
+
+" The following three functions can be quickly implemented in project vimrc
+" files via: let @w=':execute GitMessageHeader("SOMEPREFIX")A'
 function! InsertStoryText(storyPrefix)
   " Copy first instance of git branch name containing story text to top
   execute '1 | /'.a:storyPrefix.'-\d/copy 0'
@@ -22,7 +26,7 @@ function! GitMessageBody(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
   execute 's/-'.a:storyPrefix.'/\r'.a:storyPrefix.'/ge'
-  " Add new lines at top of the file
+  " Insert header and add new lines at top of the file
   execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O" | 1
 endfunction
 
@@ -90,7 +94,7 @@ nnoremap <silent> \d :w !diff % -<CR>
 
 " Quick range normal mode execution
 " Assume norm for visual mode, since range comes for free
-vnoremap \Q :norm
+vnoremap \q :norm
 nnoremap \q :'m,.
 
 " Copy current various common texts to system clipboard
@@ -175,7 +179,7 @@ augroup AutoActions
   autocmd!
   autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
   autocmd BufEnter,BufNewFile,BufRead * set mouse=
-  autocmd InsertEnter,InsertLeave * set cul!
+  autocmd InsertEnter,InsertLeave * set cul! " Remove line in insert mode
   autocmd VimEnter * call LoadProjectVimrc()
   autocmd WinEnter * call WindowEnterHighlight()
   autocmd WinLeave * call WindowLeaveHighlight()
@@ -209,7 +213,7 @@ set backspace=2
 set wildmode=longest:list,full
 set wildmenu
 
-" Expand %% to path of current file
+" Expand %% to path of current file in command mode
 cabbrev %% <C-R>=expand('%:p:h')<CR>
 
 " Highlight search terms
@@ -223,3 +227,6 @@ set lazyredraw
 
 " Indent on newline
 set autoindent
+
+" Cursor style
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

@@ -161,5 +161,5 @@ set completeopt-=preview
 " --- ALE ---
 
 nnoremap \af :ALEFix<cr>
-let g:ale_lint_delay = 1000
+" let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
