@@ -33,24 +33,24 @@ endfunction
 " --- Keybinds ---
 
 " Tabs / two spaces toggle
-let g:my_tab=2
+let g:rvdev_tab_stops=2
 
-execute "set shiftwidth=".g:my_tab
-execute "set softtabstop=".g:my_tab
-execute "set tabstop=".g:my_tab
+execute "set shiftwidth=".g:rvdev_tab_stops
+execute "set softtabstop=".g:rvdev_tab_stops
+execute "set tabstop=".g:rvdev_tab_stops
 set expandtab
 
 function! SetToTabs()
-  execute "set shiftwidth=".g:my_tab
+  execute "set shiftwidth=".g:rvdev_tab_stops
   set softtabstop=0
   set noexpandtab
   echo "Set to tabs."
 endfunction
 
 function! SetToSpaces()
-  execute "set shiftwidth=".g:my_tab
-  execute "set tabstop=".g:my_tab
-  execute "set softtabstop=".g:my_tab
+  execute "set shiftwidth=".g:rvdev_tab_stops
+  execute "set tabstop=".g:rvdev_tab_stops
+  execute "set softtabstop=".g:rvdev_tab_stops
   set expandtab
   echo "Set to spaces."
 endfunction

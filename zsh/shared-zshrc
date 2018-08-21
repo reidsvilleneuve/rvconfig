@@ -1,10 +1,9 @@
 # Env vars
 IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
-set -o ignoreeof  # In case above command doens't work
+set -o ignoreeof  # In case above command doesn't work
 ZSH_THEME="avit"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-# TODO: Check for syntax highlighting plugin in before attempting to load it
 plugins=(git vi-mode tmux)
 
 export EDITOR=vim
