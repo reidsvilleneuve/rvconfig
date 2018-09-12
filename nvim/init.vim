@@ -7,7 +7,27 @@ source ~/rvconfig/nvim-vim-shared/shared.vim
 "            "
 " ********** "
 
-set inccommand=split " Preview replacements in a split
+" Preview replacements in a split
+
+set inccommand=split
+
+" Auto import sorting for Typescript
+
+function! RVDEV_SortTypescriptImports()
+  let l:rangePrefix="'b,'n"
+  " Set begin and end markers - b is beginning, n is end, per above
+  execute "normal gg/mport\<CR>hmbG?^import\<CR>f{%mn"
+  " Remove blank lines
+  execute l:rangePrefix.'g/^$/d'
+  " Set all import statements to 1-liners
+  execute l:rangePrefix.'g/import {$/norm jvi{JJkJ'
+  " Sort start from the first single quote
+  execute l:rangePrefix."sort /'/"
+  " Move local imports to the bottom of the list with a newline separator
+  execute "normal 'bV/'@\<CR>kd'npO"
+endfunction
+
+nnoremap \i :call RVDEV_SortTypescriptImports()<CR>
 
 " ************ "
 "              "

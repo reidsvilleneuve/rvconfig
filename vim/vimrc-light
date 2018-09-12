@@ -1,8 +1,7 @@
 " TODO:
 
 "  See https://github.com/mcantor/no_plugins/blob/master/no_plugins.vim for
-"  some tricks. I'm considering some VERY light non-supported syntax plugins
-"  (Scala / Clojure?)
+"  some tricks.
 
 " First run steps:
 " - Optional: Symlink rvconfig/vim/.vim-light/colors to ~/.vim-light/colors if
@@ -19,8 +18,12 @@ source ~/rvconfig/nvim-vim-shared/shared.vim
 " Fixup all commits in interactive rebase
 nnoremap \r ggj<C-v>}kecf<Esc>
 
-" Fixup all commits starting with 'wip:' in interactive rebase
-nnoremap \R :g/wip:/norm cef<CR>:noh<CR>
+" Handle interactive rebase per commit message annotations:
+nnoremap \R :%s/\vpick (.*) RVDEV_(.*):/\L\2 \1 \URVDEV_\2:<CR>
+
+" Quick commit message headers
+nnoremap \m ggIRVDEV_FIXUP: <Esc>:startinsert!<CR>
+nnoremap \M ggIRVDEV_DROP: <Esc>:startinsert!<CR>
 
 " --- Stops <Esc> delay ---
 set ttimeoutlen=50

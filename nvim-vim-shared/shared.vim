@@ -6,7 +6,7 @@
 " Quick git messages
 
 " The following three functions can be quickly implemented in project vimrc
-" files via: let @w=':execute GitMessageHeader("SOMEPREFIX")A'
+" files via: nnoremap \\w :call GitMessageBody("SOMEPREFIX")<CR>
 function! InsertStoryText(storyPrefix)
   " Copy first instance of git branch name containing story text to top
   execute '1 | /'.a:storyPrefix.'-\d/copy 0'
@@ -18,8 +18,8 @@ function! GitMessageHeader(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
   execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
-  " Insert : and space at end of line
-  execute 'normal A: '
+  " Insert mode with : and space at end of line
+  execute 'normal A: ' | startinsert!
 endfunction
 
 function! GitMessageBody(storyPrefix)
@@ -27,7 +27,7 @@ function! GitMessageBody(storyPrefix)
   " Parse story text line
   execute 's/-'.a:storyPrefix.'/\r'.a:storyPrefix.'/ge'
   " Insert header and add new lines at top of the file
-  execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O" | 1
+  execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O\<Esc>gg" | startinsert!
 endfunction
 
 " --- Keybinds ---
@@ -132,7 +132,6 @@ endfunction
 call SetSnippit("des", "jasmine-describe.js", "f(=%2f'i")
 call SetSnippit("it", "jasmine-it.js", "f(=%2f'i")
 call SetSnippit("bfe", "jasmine-before-each.js", "f(=%o")
-
 call SetSnippit("ldes", "jasmine-describe-lambda.js", "f(=%f'a")
 call SetSnippit("lit", "jasmine-it-lambda.js", "f(=%2f'i")
 call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
@@ -145,14 +144,7 @@ call SetSnippit("fun", "js-function.js", "f{=a{t(i")
 function! LoadProjectVimrc()
   let projectVimrcPath = $PWD."/.rvdev/vimrc"
 
-  " Set ProjectVimrcWhitelist in your system-wide vim config file. It expects
-  " an array of strings representing the absolute paths of whitelisted project
-  " folders.  e.g.:
-  "
-  " let g:ProjectVimrcWhitelist = [
-  "   \'/Users/someusername/repos/my-project',
-  "   \'/Users/someusername/repos/another-codebase',
-  " \]
+  " See this directory's README.md file for setup instructions
 
   if exists('g:ProjectVimrcWhitelist') && !empty(glob(projectVimrcPath))
     if index(g:ProjectVimrcWhitelist, $PWD) >= 0
@@ -192,7 +184,7 @@ set statusline=%F\ %=%l\:%c " File --> line:column
 set laststatus=2 " Always show status line
 
 " Show whitespace
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:↵,tab:>-,trail:~,extends:>,precedes:<
 set list
 
 " Highlights the line that the cursor is on in current window
