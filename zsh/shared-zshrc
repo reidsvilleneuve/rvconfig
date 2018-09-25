@@ -20,15 +20,15 @@ alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
 alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand'
 
-# Misc commands
+# Misc
 
 ulimit -n 2048
 bindkey -v
 
-# NVM autoload -- Slow. Enabled so that I don't forget to change versions.
-
 autoload -U add-zsh-hook
 load-project-locals() {
+  # NVM autoload -- Slow. Enabled so that I don't forget to change versions.
+
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
@@ -45,15 +45,7 @@ load-project-locals() {
     nvm use default
   fi
 
-  # Export PROJECT_ZSHRC_WHITELIST in ~/.zshrc. It expects an array of
-  # strings representing the absolute paths of whitelisted project folders.
-  #
-  # e.g.:
-  #
-  # export PROJECT_ZSHRC_WHITELIST=( \
-  #   "/Users/someusername/repos/my-project" \
-  #   "/Users/someusername/repos/another-codebase" \
-  # )
+  # Project zshrc
 
   local current_directory="$(pwd)"
   local local_zshrc_path="$current_directory/.rvdev/zshrc"

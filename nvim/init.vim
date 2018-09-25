@@ -15,7 +15,7 @@ set inccommand=split
 
 function! RVDEV_SortTypescriptImports()
   let l:rangePrefix="'b,'n"
-  " Set begin and end markers - b is beginning, n is end, per above
+  " Set begin and end markers - b is beginning, n is end, per range prefix above
   execute "normal gg/mport\<CR>hmbG?^import\<CR>f{%mn"
   " Remove blank lines
   execute l:rangePrefix.'g/^$/d'
@@ -28,6 +28,11 @@ function! RVDEV_SortTypescriptImports()
 endfunction
 
 nnoremap \i :call RVDEV_SortTypescriptImports()<CR>
+
+" Persistent undo
+
+set undodir=~/.config/nvim/undodir
+set undofile
 
 " ************ "
 "              "
@@ -53,6 +58,7 @@ if dein#load_state('~/.nvimpkg')
 
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
+  call dein#add('luochen1990/rainbow.git') " Colored bracket matching
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
@@ -173,6 +179,10 @@ xmap <C-j> <Plug>(neosnippet_expand_target)
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" --- Rainbow ---
+
+ let g:rainbow_active = 0 " 1 to enable it and toggle later via :RainbowToggle
 
 " --- TypeScript ---
 
