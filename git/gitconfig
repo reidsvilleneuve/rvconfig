@@ -9,3 +9,4 @@
 	prompt = true
 [rerere]
 	enabled = 1
+	autoupdate = true
