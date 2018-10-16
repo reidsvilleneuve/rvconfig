@@ -57,6 +57,7 @@ if dein#load_state('~/.nvimpkg')
   " Plugins to add
 
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
+  call dein#add('HerringtonDarkholme/yats.vim') " Typescript syntax file
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('luochen1990/rainbow.git') " Colored bracket matching
   call dein#add('mattn/emmet-vim.git') " Emmet integration
@@ -166,6 +167,9 @@ nnoremap <silent> \N :let @+=fugitive#head()<cr>:echo "Current branch's name cop
 " Allows us to see actual markdown text
 let g:vim_markdown_conceal = 0
 
+" Disable typescript (In favor of YATS)
+let g:polyglot_disabled = ['typescript']
+
 " --- Neosnippits ---
 
 let g:neosnippet#disable_runtime_snippets={ '_' : 1 }
@@ -193,3 +197,5 @@ set completeopt-=preview
 nnoremap \af :ALEFix<cr>
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
+
+
