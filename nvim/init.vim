@@ -57,13 +57,11 @@ if dein#load_state('~/.nvimpkg')
   " Plugins to add
 
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
-  call dein#add('HerringtonDarkholme/yats.vim') " Typescript syntax file
+  call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
-  call dein#add('luochen1990/rainbow.git') " Colored bracket matching
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
-  call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
@@ -77,6 +75,9 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-surround.git') " Text object surrounding
   call dein#add('w0rp/ale.git') " Multi-language linting
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
+
+  " Disabled for testing:
+  " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
 
   call dein#end()
   call dein#save_state()
@@ -153,10 +154,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" --- PaperColor Theme ---
+" --- Gruvbox theme ---
 
 set background=dark
-colorscheme PaperColor
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 " --- Fugitive ---
 
@@ -166,9 +168,6 @@ nnoremap <silent> \N :let @+=fugitive#head()<cr>:echo "Current branch's name cop
 
 " Allows us to see actual markdown text
 let g:vim_markdown_conceal = 0
-
-" Disable typescript (In favor of YATS)
-let g:polyglot_disabled = ['typescript']
 
 " --- Neosnippits ---
 
@@ -183,10 +182,6 @@ xmap <C-j> <Plug>(neosnippet_expand_target)
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-
-" --- Rainbow ---
-
- let g:rainbow_active = 0 " 1 to enable it and toggle later via :RainbowToggle
 
 " --- TypeScript ---
 
