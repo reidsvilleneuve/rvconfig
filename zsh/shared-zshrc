@@ -1,10 +1,11 @@
 # Env vars
 IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
 set -o ignoreeof  # In case above command doesn't work
-ZSH_THEME="avit"
+ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git vi-mode tmux)
+export KEYTIMEOUT=2
 
 export EDITOR=vim
 export VISUAL=vim
@@ -50,7 +51,6 @@ load-project-locals() {
   local current_directory="$(pwd)"
   local local_zshrc_path="$current_directory/.rvdev/zshrc"
   if [ -f "$local_zshrc_path" ]; then
-    # TODO: There is probably a better place for this:
     export RVDEV_PROJECT_ROOT="$current_directory"
     echo "Project directory set to $RVDEV_PROJECT_ROOT"
 
@@ -58,7 +58,7 @@ load-project-locals() {
       source "$local_zshrc_path"
       echo "Project zshrc loaded."
     else
-      echo "Warning: Non-whitelisted project zshrc found for this directory. ($current_directory)"
+      echo "Warning: Non-whitelisted project zshrc found for this directory."
     fi
   fi
 }

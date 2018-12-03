@@ -180,6 +180,8 @@ augroup END
 
 " --- Visuals ---
 
+syntax on
+
 set statusline=%F\ %=%l\:%c " File --> line:column
 set laststatus=2 " Always show status line
 
@@ -196,7 +198,6 @@ set t_Co=256
 " --- Misc ---
 
 filetype plugin indent on
-syntax enable
 
 " Lets backspace act like it does in modern OS environments.
 set backspace=2

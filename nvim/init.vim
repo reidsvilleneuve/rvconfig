@@ -55,13 +55,12 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('~/.nvimpkg/repos/github.com/Shougo/dein.vim')
 
   " Plugins to add
-
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
-  call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
+  call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
@@ -77,6 +76,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
 
   " Disabled for testing:
+  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
 
   call dein#end()
@@ -192,5 +192,3 @@ set completeopt-=preview
 nnoremap \af :ALEFix<cr>
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
-
-
