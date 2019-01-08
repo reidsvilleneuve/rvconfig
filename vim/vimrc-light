@@ -19,7 +19,7 @@ source ~/rvconfig/nvim-vim-shared/shared.vim
 nnoremap \r ggj<C-v>}kecf<Esc>
 
 " Handle interactive rebase per commit message annotations:
-nnoremap \R :%s/\vpick (.*) RVDEV_(.*):/\L\2 \1 \URVDEV_\2:<CR>
+nnoremap \R :%s/\vpick (.*) (RVDEV_)(.*):/\L\3 \1 \U\2\3:<CR>
 
 " Quick commit message headers
 nnoremap \m ggIRVDEV_FIXUP: <Esc>:startinsert!<CR>

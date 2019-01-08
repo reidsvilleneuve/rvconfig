@@ -1,6 +1,5 @@
 {
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
     "editor.dragAndDrop": false,
     "explorer.enableDragAndDrop": false,
     "vim.ignorecase": false,
