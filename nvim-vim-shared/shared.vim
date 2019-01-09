@@ -122,10 +122,13 @@ set number relativenumber
 " Open VSCode on current file
 nnoremap \X :!code -g <C-r>=expand('%:p')<CR>:<C-r>=line('.')<CR>:<C-r>=col('.')<CR><CR>
 
+" Newline-ify a ', '-separated list
+nnoremap \,, :s/, /,\r/g<CR>='.
+
 " --- Snippits ---
 
 function! SetSnippit(mapping, file, action)
-  execute "nnoremap \,".a:mapping." :-1read ~/rvconfig/nvim-vim-shared/snippits/".a:file."<CR>".a:action
+  execute "nnoremap \\,".a:mapping." :-1read ~/rvconfig/nvim-vim-shared/snippits/".a:file."<CR>".a:action
 endfunction
 
 " Jasmine
