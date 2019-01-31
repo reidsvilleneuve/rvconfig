@@ -123,7 +123,7 @@ set number relativenumber
 nnoremap \X :!code -g <C-r>=expand('%:p')<CR>:<C-r>=line('.')<CR>:<C-r>=col('.')<CR><CR>
 
 " Newline-ify a ', '-separated list
-nnoremap \,, :s/, /,\r/g<CR>='.
+nnoremap \,, :s/, /,\r/g<CR>='.:noh<CR>
 
 " --- Snippits ---
 
