@@ -82,7 +82,7 @@ nnoremap \E :e <C-R>=expand(@+)<CR><CR>
 " Easier buffer switching
 nnoremap \bb :ls<CR>:b<space>
 
-" Bufferonly session save / load
+" Buffer-only session save / load
 nnoremap <silent> \s :set sessionoptions=buffers<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> \l :so Session.vim<CR>:echo "Session loaded"<CR>
 
