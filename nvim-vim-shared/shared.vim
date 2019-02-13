@@ -98,9 +98,11 @@ vnoremap \q :norm
 nnoremap \q :'m,.
 
 " Copy current various common texts to system clipboard
-nnoremap <silent> \c :let @+=@%<CR>:echo "Current file's relative path copied to system clipboard"<CR>
-nnoremap <silent> \C :let @+=expand('%:p')<CR>:echo "Current file's full path copied to system clipboard"<CR>
-nnoremap <silent> \n :let @+=expand('%:t')<CR>:echo "Current file's name copied to system clipboard"<CR>
+nnoremap <silent> \cp :let @+=@%<CR>:echo "Current file's relative path copied to system clipboard"<CR>
+nnoremap <silent> \cP :let @+=expand('%:p')<CR>:echo "Current file's full path copied to system clipboard"<CR>
+nnoremap <silent> \cl :let @+=@%.' line '.line('.')<CR>:echo "Current file's relative path and line number copied to system clipboard"<CR>
+nnoremap <silent> \cL :let @+=expand('%:p').' line '.line('.')<CR>:echo "Current file's full path and line number copied to system clipboard"<CR>
+nnoremap <silent> \cn :let @+=expand('%:t')<CR>:echo "Current file's name copied to system clipboard"<CR>
 
 " Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly in some cases - run this to work

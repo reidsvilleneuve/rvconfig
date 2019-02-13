@@ -162,7 +162,7 @@ colorscheme gruvbox
 
 " --- Fugitive ---
 
-nnoremap <silent> \N :let @+=fugitive#head()<cr>:echo "Current branch's name coped to system clipboard"<cr>
+nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name coped to system clipboard"<cr>
 
 " --- Polyglot ---
 
