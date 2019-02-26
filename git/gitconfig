@@ -10,3 +10,5 @@
 [rerere]
 	enabled = 1
 	autoupdate = true
+[diff]
+	wsErrorHighlight = all
