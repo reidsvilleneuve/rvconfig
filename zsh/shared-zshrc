@@ -19,6 +19,8 @@ alias gtp='cd $RVDEV_PROJECT_ROOT'
 alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
 alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand'
+alias rvdev-source-root='source ~/.zshrc'
+alias rvdev-source-local='source .rvdev/zshrc'
 
 # Misc
 
