@@ -27,7 +27,7 @@ function! RVDEV_SortTypescriptImports()
   execute "normal 'bV/'@\<CR>kd'npO"
 endfunction
 
-nnoremap \i :call RVDEV_SortTypescriptImports()<CR>
+nnoremap \o :call RVDEV_SortTypescriptImports()<CR>
 
 " Persistent undo
 
@@ -56,9 +56,9 @@ if dein#load_state('~/.nvimpkg')
 
   " Plugins to add
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
+  call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('mattn/emmet-vim.git') " Emmet integration
-  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
@@ -76,8 +76,9 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
 
   " Disabled for testing:
-  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
+  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
+  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
 
   call dein#end()
   call dein#save_state()
