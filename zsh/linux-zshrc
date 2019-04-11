@@ -1,6 +1,8 @@
 # Linux first run deps:
 # - apt install xclip
 
+echo -- Executing RvConfig Linux run commands...
+
 source ~/rvconfig/zsh/shared-zshrc
 
 alias copy="xclip -sel clip"
@@ -9,3 +11,5 @@ alias lvim='vim -u ~/rvconfig/vim/.vimrc-light'
 
 setxkbmap -option caps:swapcaps
 export TERM="xterm-256color"
+
+echo -- RvConfig Linux run commands complete.
