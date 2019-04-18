@@ -99,12 +99,20 @@ call denite#custom#var('file_rec/git', 'command',
 nnoremap <silent> <C-p> :<C-u>Denite
 \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
 
-"Ag command for grep source
-call denite#custom#var('grep', 'command', ['ag'])
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts',
-  \ ['-i', '--vimgrep'])
+\ ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+
+" Commented out to test ripgrep:
+" Ag command for grep source
+" call denite#custom#var('grep', 'command', ['ag'])
+" call denite#custom#var('grep', 'default_opts',
+"   \ ['-i', '--vimgrep'])
+" call denite#custom#var('grep', 'pattern_opt', [])
+
 call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
