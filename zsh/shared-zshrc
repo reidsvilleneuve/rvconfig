@@ -22,6 +22,7 @@ alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand
 alias rvdev-source-root='source ~/.zshrc'
 alias rvdev-source-local='source .rvdev/zshrc'
 alias tsd='tmux new-session -d -s'
+alias gs='git show'
 
 # Misc
 
@@ -43,9 +44,10 @@ load-project-locals() {
     elif [ "$nvmrc_node_version" != "$node_version" ]; then
       nvm use
     fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version..."
-    nvm use default
+  # Commented out for workflow testing of non-reverting version:
+  # elif [ "$node_version" != "$(nvm version default)" ]; then
+  #   echo "Reverting to nvm default version..."
+  #   nvm use default
   fi
 
   # Project zshrc

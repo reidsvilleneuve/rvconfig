@@ -100,7 +100,7 @@ nnoremap <silent> <C-p> :<C-u>Denite
 \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
 
 " Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'command', ['rg', '-g', '!tags'])
 call denite#custom#var('grep', 'default_opts',
 \ ['--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
