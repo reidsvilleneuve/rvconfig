@@ -1,0 +1,17 @@
+# Global gitignore setup isn't working due to https://github.com/BurntSushi/ripgrep/issues/1014
+# Until that's fixed, we will just mirror git/gitignore
+
+# Vim / NeoVim
+-g!.rvdev/
+-g!Session.vim
+-g!.tern-project
+-g!.tern-port
+-g!.ctags
+-g!tags
+-g!*.swp
+
+# VSCode
+-g!.vscode
+
+# OSX
+-g!.DS_Store

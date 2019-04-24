@@ -1,7 +1,6 @@
 # Vim / NeoVim
 .rvdev/
 Session.vim
-.todo
 .tern-project
 .tern-port
 .ctags
