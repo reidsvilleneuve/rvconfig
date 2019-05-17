@@ -6,6 +6,7 @@ Session.vim
 .ctags
 tags
 *.swp
+.flowconfig
 
 # VSCode
 .vscode

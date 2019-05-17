@@ -68,6 +68,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
+  call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
   call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
@@ -78,7 +79,6 @@ if dein#load_state('~/.nvimpkg')
   " Disabled for testing:
   " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
-  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
   " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
 
   call dein#end()
