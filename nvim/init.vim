@@ -93,11 +93,11 @@ endif
 " --- Denite ---
 
 " File_rec/git
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
+call denite#custom#alias('source', 'file/rec', 'file_rec')
+call denite#custom#var('file/rec', 'command',
 \ ['git', 'ls-files', '-co', '--exclude-standard'])
 nnoremap <silent> <C-p> :<C-u>Denite
-\ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+\ `finddir('.git', ';') != '' ? 'file/rec' : 'file_rec'`<CR>
 
 " Ripgrep command on grep source
 call denite#custom#var('grep', 'command', ['rg', '-g', '!tags'])
@@ -139,7 +139,7 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 " Interactive recursive search with quickfix
 " https://gist.github.com/dlants/8d7fadfb691b511f1376ba437a9aaea9
 " Tag with <C-o> + */Space, and use with :cdo for project-wide actions
-map \F :DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!<CR>
+nnoremap \F :DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!<CR>
 
 " --- Emmet ---
 
