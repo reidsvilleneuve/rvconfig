@@ -176,8 +176,9 @@ nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name co
 
 " --- Polyglot ---
 
-" Allows us to see actual markdown text
-let g:vim_markdown_conceal = 0
+" Allows us to see actual markdown text. Set to 1, which is the default, as a
+" test. Will revert to 0 if this becomes hard to use.
+let g:vim_markdown_conceal = 1
 
 " --- Neosnippits ---
 
@@ -189,10 +190,6 @@ imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
 xmap <C-j> <Plug>(neosnippet_expand_target)
 
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
 " --- TypeScript ---
 
 set completeopt-=preview
@@ -202,3 +199,10 @@ set completeopt-=preview
 nnoremap \af :ALEFix<cr>
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
+
+" --- IndentLine ---
+
+" Stop IndentLine from overwriting our concealcursor settings. This causes the
+" indent lines to not be visible on the current line (and also Visual
+" mode-selected lines). I find this to be worth it.
+let g:indentLine_setConceal = 0

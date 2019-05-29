@@ -229,3 +229,8 @@ set autoindent
 
 " Cursor style
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+
+" Conceal unless cursor is on same line
+if has('conceal')
+  set conceallevel=2 concealcursor=""
+endif
