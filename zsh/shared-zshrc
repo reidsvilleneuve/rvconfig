@@ -25,6 +25,22 @@ alias rvdev-source-local='source .rvdev/zshrc'
 alias tsd='tmux new-session -d -s'
 alias gs='git show'
 
+# Utility functions
+
+function diffremote () {
+  first_url=$1
+  second_url=$2
+
+  vimdiff <(curl -# $first_url) <(curl -# $second_url)
+}
+
+function diffremotejson () {
+  first_url=$1
+  second_url=$2
+
+  vimdiff <(curl -# $first_url | python -m json.tool) <(curl -# $second_url | python -m json.tool)
+}
+
 # Misc
 
 ulimit -n 2048
