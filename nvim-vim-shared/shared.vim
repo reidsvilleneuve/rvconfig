@@ -128,6 +128,10 @@ nnoremap \X :!code -g <C-r>=expand('%:p')<CR>:<C-r>=line('.')<CR>:<C-r>=col('.')
 " Newline-ify a ', '-separated list
 nnoremap \,, :s/, /,\r/g<CR>='.:noh<CR>
 
+" Disable Page Up / Down
+nnoremap <PageUp> <nop>
+nnoremap <PageDown> <nop>
+
 " --- Snippits ---
 
 function! SetSnippit(mapping, file, action)
