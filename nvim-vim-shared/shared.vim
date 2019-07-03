@@ -221,7 +221,7 @@ cabbrev %% <C-R>=expand('%:p:h')<CR>
 
 " Highlight search terms
 set hlsearch
-"
+
 " Search while typing in search query
 set incsearch
 

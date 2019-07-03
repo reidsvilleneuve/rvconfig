@@ -24,21 +24,43 @@ alias rvdev-source-root='source ~/.zshrc'
 alias rvdev-source-local='source .rvdev/zshrc'
 alias tsd='tmux new-session -d -s'
 alias gs='git show'
+alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
 
 # Utility functions
 
-function diffremote () {
+function rvdev-diff-remote () {
   first_url=$1
   second_url=$2
 
-  vimdiff <(curl -# $first_url) <(curl -# $second_url)
+  vimdiff <(curl -# "$first_url") <(curl -# "$second_url")
 }
 
-function diffremotejson () {
+function rvdev-diff-remote-json () {
   first_url=$1
   second_url=$2
 
-  vimdiff <(curl -# $first_url | python -m json.tool) <(curl -# $second_url | python -m json.tool)
+  vimdiff <(curl -# "$first_url" | python -m json.tool) <(curl -# "$second_url" | python -m json.tool)
+}
+
+function rvdev-gco-name () {
+  search_query="$1"
+
+  if [ -z "$search_query" ]; then
+    echo "Specify a substring of the fist line of any commit message."
+    return 1
+  fi
+
+  matching_commits="$(git log --oneline --all | grep -F "$search_query")"
+  number_of_results="$(echo "$matching_commits" | wc -l)"
+
+  if [ "$number_of_results" -gt 1 ]; then
+    echo "Multiple commits found:\n$matching_commits"
+  elif [ -z "$matching_commits" ]; then
+    echo "No commits with that message found."
+  else
+    commit_hash="$(echo "$matching_commits" | cut -d' ' -f1)"
+    git checkout "$commit_hash"
+  fi
 }
 
 # Misc
