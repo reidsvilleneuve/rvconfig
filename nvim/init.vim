@@ -68,6 +68,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
+  call dein#add('spiiph/vim-space.git') " Extra navigation options
   call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
   call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
