@@ -116,7 +116,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Hide search highlighting
-nnoremap <silent> g<CR> :noh<CR>
+nnoremap <silent> g<Space> :noh<CR>
 
 " Number Line Toggle
 nnoremap <silent> <C-n> :set number relativenumber!<CR>
