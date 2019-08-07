@@ -238,3 +238,8 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 if has('conceal')
   set conceallevel=2 concealcursor=""
 endif
+
+" Improved diff view
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+  set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
