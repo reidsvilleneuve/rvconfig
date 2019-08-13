@@ -73,7 +73,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
-  call dein#add('w0rp/ale.git') " Multi-language linting
+  call dein#add('dense-analysis/ale.git') " Multi-language linting
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
   call dein#add('zhaocai/vim-space.git') " Extra navigation options
 
