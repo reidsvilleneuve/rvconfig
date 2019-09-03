@@ -141,5 +141,8 @@
             "name": "Vue Green",
             "value": "#42b883"
         }
-    ]
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

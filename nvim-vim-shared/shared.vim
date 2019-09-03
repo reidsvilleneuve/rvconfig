@@ -86,8 +86,11 @@ nnoremap \bb :ls<CR>:b<space>
 nnoremap <silent> \s :set sessionoptions=buffers<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> \l :so Session.vim<CR>:echo "Session loaded"<CR>
 
-" Stops ex mode
-nnoremap Q <nop>
+" Replaces ex mode with quick macro execution from the q register, which
+" complements the ease of recording to that register via qq
+nnoremap Q @q
+nnoremap \Q :'m,.norm@q<CR>
+vnoremap Q :'<,'>norm@q<CR>
 
 " Diff unsaved buffer with previously saved version
 nnoremap <silent> \d :w !diff % -<CR>
@@ -148,6 +151,7 @@ call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 
 " JavaScript
 call SetSnippit("fun", "js-function.js", "f{=a{t(i")
+call SetSnippit("cl", "js-console-log.js", "==f'a")
 
 " --- Automatic commands ---
 
