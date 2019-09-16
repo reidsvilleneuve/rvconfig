@@ -3,13 +3,20 @@ This sets up functionality that is the same between the light (vim) and full
 
 Set ProjectVimrcWhitelist in your system-wide vim config file. It expects an
 array of strings representing the absolute paths of whitelisted project
-folders.  e.g.:
+folders.
+
+Here is an example of a typical system vimrc (located at ~/.vimrc for vim and
+~/.config/nvim/init.vim for neovim):
 
 ```
+set nocompatible # If needed
+
 let g:ProjectVimrcWhitelist = [
   \'/Users/someusername/repos/my-project',
   \'/Users/someusername/repos/another-codebase',
 \]
+
+source ~/rvconfig/vim/vimrc-light
 ```
 
 Here is an example of a typical local .vimrc file:

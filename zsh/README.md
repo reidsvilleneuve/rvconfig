@@ -10,10 +10,16 @@ An example system ~/.zshrc for linux:
 alias gtr="cd ~/repos"
 
 export PROJECT_ZSHRC_WHITELIST=( \
-  "/home/someusername/someproject" \
+  "/home/someusername/repos/someproject" \
 )
 
 export PATH="$HOME/bin:$PATH"
+
+############
+# Env vars #
+############
+
+export FAVORITE_COLOR="Blue. No! YELLOOOOOOOOOooooooooooow!"
 
 ##########
 # System #
@@ -23,8 +29,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 source ~/rvconfig/zsh/linux-zshrc
-export ZSH=/home/someusername/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+source "$HOME/rvconfig/zsh/rvdev.zsh-theme"
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
