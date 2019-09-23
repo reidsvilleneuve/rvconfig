@@ -63,6 +63,12 @@ function rvdev-gco-name () {
   fi
 }
 
+function rvdev-view-formatted-json-file () {
+  file_to_view="$1"
+
+  python -m json.tool < "$file_to_view" | vim -Rc'set ft=json' -
+}
+
 # Misc
 
 ulimit -n 2048
