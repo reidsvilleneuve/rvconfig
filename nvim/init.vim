@@ -56,6 +56,8 @@ if dein#load_state('~/.nvimpkg')
 
   " Plugins to add
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
+  call dein#add('dense-analysis/ale.git') " Multi-language linting
+  call dein#add('flowtype/vim-flow.git') " Support for FB's Flow
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
   call dein#add('mattn/emmet-vim.git') " Emmet integration
@@ -68,12 +70,10 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
-  call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
   call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
   call dein#add('tpope/vim-surround.git') " Text object surrounding
-  call dein#add('dense-analysis/ale.git') " Multi-language linting
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
   call dein#add('zhaocai/vim-space.git') " Extra navigation options
 
@@ -81,6 +81,7 @@ if dein#load_state('~/.nvimpkg')
   " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
+  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
 
   call dein#end()
   call dein#save_state()
