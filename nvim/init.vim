@@ -140,7 +140,7 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 
 " Interactive recursive search with quickfix
 " https://gist.github.com/dlants/8d7fadfb691b511f1376ba437a9aaea9
-" Tag with <C-o> + */Space, and use with :cdo for project-wide actions
+" Tag with <C-o> + */Space + tab + 'quickfix', and use with :cdo for project-wide actions
 nnoremap \F :DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!<CR>
 
 " --- Emmet ---
@@ -181,6 +181,7 @@ nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name co
 " Allows us to see actual markdown text. Set to 1, which is the default, as a
 " test. Will revert to 0 if this becomes hard to use.
 let g:vim_markdown_conceal = 1
+let g:javascript_plugin_flow = 1
 
 " --- Neosnippits ---
 
@@ -208,3 +209,8 @@ set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
 " indent lines to not be visible on the current line (and also Visual
 " mode-selected lines). I find this to be worth it.
 let g:indentLine_setConceal = 0
+
+" --- Flow ---
+
+" Disable type checking upon save:
+let g:flow#enable = 0
