@@ -135,6 +135,9 @@ nnoremap \,, :s/, /,\r/g<CR>='.:noh<CR>
 nnoremap <PageUp> <nop>
 nnoremap <PageDown> <nop>
 
+" Write as superuser in case `sudo` is forgotten
+cnoremap w!! w !sudo tee > /dev/null %
+
 " --- Snippits ---
 
 function! SetSnippit(mapping, file, action)
