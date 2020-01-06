@@ -94,12 +94,32 @@ endif
 
 " --- Denite ---
 
+augroup DeniteActions
+  autocmd!
+  autocmd FileType denite call s:RVDEV_denite_settings()
+  autocmd FileType denite-filter call s:RVDEV_denite_filter_settings()
+augroup END
+
+
+function! s:RVDEV_denite_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'quickfix')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
+
+function! s:RVDEV_denite_filter_settings() abort
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
+
 " File_rec/git
-call denite#custom#alias('source', 'file/rec', 'file_rec')
-call denite#custom#var('file/rec', 'command',
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
 \ ['git', 'ls-files', '-co', '--exclude-standard'])
 nnoremap <silent> <C-p> :<C-u>Denite
-\ `finddir('.git', ';') != '' ? 'file/rec' : 'file_rec'`<CR>
+\ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
 " Ripgrep command on grep source
 call denite#custom#var('grep', 'command', ['rg', '-g', '!tags'])
@@ -118,8 +138,8 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
-call denite#custom#source(
-\ 'grep', 'matchers', ['matcher_regexp'])
+call denite#custom#source('grep', 'matchers', ['matcher_regexp'])
+call denite#custom#source('grep', 'args', ['', '', '!'])
 
 "Key mappings
 call denite#custom#map(

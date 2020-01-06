@@ -13,10 +13,11 @@ set nocompatible # If needed
 
 let g:ProjectVimrcWhitelist = [
   \'/Users/someusername/repos/my-project',
-  \'/Users/someusername/repos/another-codebase',
+  \'/Users/someusername/repos/another-codebase'
 \]
 
 source ~/rvconfig/vim/vimrc-light
+# Or: source ~/rvconfig/nvim/init.vim
 ```
 
 Here is an example of a typical local .vimrc file:
