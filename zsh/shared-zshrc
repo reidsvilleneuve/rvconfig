@@ -31,14 +31,12 @@ alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
 function rvdev-diff-remote () {
   first_url=$1
   second_url=$2
-
   vimdiff <(curl -# "$first_url") <(curl -# "$second_url")
 }
 
 function rvdev-diff-remote-json () {
   first_url=$1
   second_url=$2
-
   vimdiff <(curl -# "$first_url" | python -m json.tool) <(curl -# "$second_url" | python -m json.tool)
 }
 
@@ -65,8 +63,12 @@ function rvdev-gco-name () {
 
 function rvdev-view-formatted-json-file () {
   file_to_view="$1"
-
   python -m json.tool < "$file_to_view" | vim -Rc'set ft=json' -
+}
+
+function rvdev-view-formatted-json-remote () {
+  url_to_get="$1"
+  vim -Rc'set ft=json' <(curl -# "$url_to_get" | python -m json.tool)
 }
 
 # Misc
