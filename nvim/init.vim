@@ -103,11 +103,12 @@ augroup END
 
 function! s:RVDEV_denite_settings() abort
   nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'quickfix')
+  nnoremap <silent><buffer><expr> g<CR> denite#do_map('choose_action')
   nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
   nnoremap <silent><buffer><expr> q denite#do_map('quit')
   nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> g* denite#do_map('toggle_select_all')
 endfunction
 
 function! s:RVDEV_denite_filter_settings() abort
@@ -140,20 +141,6 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
 call denite#custom#source('grep', 'matchers', ['matcher_regexp'])
 call denite#custom#source('grep', 'args', ['', '', '!'])
-
-"Key mappings
-call denite#custom#map(
-  \ 'insert',
-  \ '<C-j>',
-  \ '<denite:move_to_next_line>',
-  \ 'noremap'
-  \)
-call denite#custom#map(
-  \ 'insert',
-  \ '<C-k>',
-  \ '<denite:move_to_previous_line>',
-  \ 'noremap'
-  \)
 
 " Recursive search
 nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
