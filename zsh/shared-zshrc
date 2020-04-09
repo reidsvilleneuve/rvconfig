@@ -24,6 +24,7 @@ alias rvdev-source-root='source ~/.zshrc'
 alias rvdev-source-local='source .rvdev/zshrc'
 alias tsd='tmux new-session -d -s'
 alias gs='git show'
+alias gcane='git commit --amend --no-edit'
 alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
 
 # Utility functions
