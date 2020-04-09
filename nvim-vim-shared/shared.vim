@@ -14,9 +14,13 @@ function! InsertStoryText(storyPrefix)
   execute 'normal dn$N2f-D'
 endfunction
 
+" TODO: Move newline-separated and single-line formats to separate functions
+" " (This refers to the 2nd `execute` invocations in the following functions):
+
 function! GitMessageHeader(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
+" TODO: Move this single-line formatting to separate function:
   execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
   " Insert mode with : and space at end of line
   execute 'normal A: ' | startinsert!
@@ -25,6 +29,17 @@ endfunction
 function! GitMessageBody(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
+" TODO: Move this this single-line formatting to separate function:
+  execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
+  " Insert header and add new lines at top of the file
+  execute "normal ggIJIRA Story: \<Esc>gg2O\<Esc>gg" | startinsert!
+endfunction
+
+
+function! GitMessageBodyMultipleStories(storyPrefix)
+  execute InsertStoryText(a:storyPrefix)
+  " Parse story text line
+" TODO: Move this multi-line formatting to separate function:
   execute 's/-'.a:storyPrefix.'/\r'.a:storyPrefix.'/ge'
   " Insert header and add new lines at top of the file
   execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O\<Esc>gg" | startinsert!
@@ -155,6 +170,7 @@ call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 " JavaScript
 call SetSnippit("fun", "js-function.js", "f{=a{t(i")
 call SetSnippit("cl", "js-console-log.js", "==f'a")
+call SetSnippit("td", "js-todo-rvdev-comment.js", "==A")
 
 " --- Automatic commands ---
 

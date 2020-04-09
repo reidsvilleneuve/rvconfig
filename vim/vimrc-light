@@ -45,3 +45,10 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
   colo industry
 endtry
+
+" --- Search ---
+
+" Use Ripgrep for :grep if available
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
