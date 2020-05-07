@@ -62,6 +62,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
   call dein#add('mattn/emmet-vim.git') " Emmet integration
+  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
@@ -80,7 +81,6 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('zhaocai/vim-space.git') " Extra navigation options
 
   " Disabled for testing:
-  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
 
@@ -119,22 +119,21 @@ endfunction
 " File_rec/git
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',
-\ ['git', 'ls-files', '-co', '--exclude-standard'])
+  \ ['git', 'ls-files', '-co', '--exclude-standard'])
 nnoremap <silent> <C-p> :<C-u>Denite
-\ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+  \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
 " Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg', '-g', '!tags'])
+call denite#custom#var('grep', 'command',
+  \[
+    \ 'rg',
+    \ '-g', '!tags',
+    \ '-g', '!package-lock.json',
+    \ '-g', '!yarn.lock',
+  \])
 call denite#custom#var('grep', 'default_opts',
-\ ['--vimgrep', '--no-heading'])
+  \ ['--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-
-" Commented out to test ripgrep:
-" Ag command for grep source
-" call denite#custom#var('grep', 'command', ['ag'])
-" call denite#custom#var('grep', 'default_opts',
-"   \ ['-i', '--vimgrep'])
-" call denite#custom#var('grep', 'pattern_opt', [])
 
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
@@ -165,9 +164,9 @@ augroup END
 let g:deoplete#enable_at_startup = 1
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ deoplete#mappings#manual_complete()
 
 function! s:check_back_space() abort
   let col = col('.') - 1

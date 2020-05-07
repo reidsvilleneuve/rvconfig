@@ -52,3 +52,9 @@ endtry
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
+
+" -- Cron --
+
+function! RvDev_SetForCronTab()
+  set noswapfile backupcopy=yes backupdir=''
+endfunction
