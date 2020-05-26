@@ -101,7 +101,6 @@ augroup DeniteActions
   autocmd FileType denite-filter call s:RVDEV_denite_filter_settings()
 augroup END
 
-
 function! s:RVDEV_denite_settings() abort
   nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
   nnoremap <silent><buffer><expr> g<CR> denite#do_map('choose_action')
@@ -113,6 +112,7 @@ function! s:RVDEV_denite_settings() abort
 endfunction
 
 function! s:RVDEV_denite_filter_settings() abort
+  call deoplete#custom#buffer_option('auto_complete', v:false)
   imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
 endfunction
 
@@ -149,6 +149,7 @@ nnoremap \f :Denite grep:. -buffer-name=search-buffer<CR>
 " https://gist.github.com/dlants/8d7fadfb691b511f1376ba437a9aaea9
 " Tag with <C-o> + */Space + tab + 'quickfix', and use with :cdo for project-wide actions
 nnoremap \F :DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!<CR>
+
 
 " --- Emmet ---
 
