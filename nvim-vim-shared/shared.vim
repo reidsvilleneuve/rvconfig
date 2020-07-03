@@ -122,6 +122,7 @@ nnoremap <silent> \cl :let @+=@%.' line '.line('.')<CR>:echo "Current file's rel
 nnoremap <silent> \cr :let @+=expand('%:t').':'.line('.')<CR>:echo "Current file's name and line number copied to system clipboard for Chrome devtools"<CR>
 nnoremap <silent> \cL :let @+=expand('%:p').' line '.line('.')<CR>:echo "Current file's full path and line number copied to system clipboard"<CR>
 nnoremap <silent> \cn :let @+=expand('%:t')<CR>:echo "Current file's name copied to system clipboard"<CR>
+nnoremap <silent> \ci :let @+='setBreakpoint("'.expand('%:p').'", '.line('.').')'<CR>:echo "Current full path and line number copied to system clipboard for node inspect"<CR>
 
 " Quicker window movement
 " NOTE: iTerm does not handle <C-h> properly in some cases - run this to work
