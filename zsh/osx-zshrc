@@ -1,7 +1,7 @@
 echo -- Executing RvConfig OSX run commands...
 
 source ~/rvconfig/zsh/shared-zshrc
-# TODO: Remove iterm2 assumption?
+# I generally use Alacritty. This is provided for portability:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 echo -- RvConfig OSX run commands complete.
