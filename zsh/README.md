@@ -2,7 +2,7 @@ Source the Linux or OSX rc in this directory in ~/.zshrc. Don't symlink - system
 
 An example system ~/.zshrc for linux:
 
-```
+```zsh
 ##################
 # Customizations #
 ##################
@@ -38,7 +38,7 @@ source "$HOME/rvconfig/zsh/rvdev.zsh-theme"
 
 An example of a project zshrc file:
 
-```
+```zsh
 export RVDEV_WORK_BRANCH='feature/PROJECTNAME-1234-do-some-stuff'
 export RVDEV_BASE_BRANCH='develop'
 export RVDEV_REV_BRANCH='develop'

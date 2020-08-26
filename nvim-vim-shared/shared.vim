@@ -105,6 +105,7 @@ nnoremap <silent> \l :so Session.vim<CR>:echo "Session loaded"<CR>
 " complements the ease of recording to that register via qq
 nnoremap Q @q
 nnoremap \Q :'m,.norm@q<CR>
+nnoremap \\Q :g//norm @q<CR>
 vnoremap Q :'<,'>norm@q<CR>
 
 " Diff unsaved buffer with previously saved version
@@ -267,3 +268,8 @@ endif
 if has('nvim-0.3.2') || has("patch-8.1.0360")
   set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
+
+" Use Syntax files for folding
+set foldmethod=syntax
+" Open files unfolded
+set foldlevelstart=20

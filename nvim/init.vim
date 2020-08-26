@@ -65,6 +65,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('morhetz/gruvbox.git') " Color theme
+  call dein#add('OmniSharp/omnisharp-vim') " C# IDE-like capabilities
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
@@ -120,6 +121,16 @@ endfunction
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',
   \ ['git', 'ls-files', '-co', '--exclude-standard'])
+call denite#custom#var('file/rec', 'command',
+  \ [
+    \'rg',
+    \'--files',
+    \'--glob', '!.git',
+    \'--glob', '!node_modules',
+    \'--glob', '!tags',
+    \'--color',
+    \'never'
+  \])
 nnoremap <silent> <C-p> :<C-u>Denite
   \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
@@ -127,9 +138,10 @@ nnoremap <silent> <C-p> :<C-u>Denite
 call denite#custom#var('grep', 'command',
   \[
     \ 'rg',
+    \ '-g', '!node_modules',
     \ '-g', '!tags',
     \ '-g', '!package-lock.json',
-    \ '-g', '!yarn.lock',
+    \ '-g', '!yarn.lock'
   \])
 call denite#custom#var('grep', 'default_opts',
   \ ['--vimgrep', '--no-heading'])
@@ -228,3 +240,7 @@ let g:flow#enable = 0
 " --- Editorconfig ---
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" --- JS File Import ---
+
+nnoremap \im :JsFileImport<CR>

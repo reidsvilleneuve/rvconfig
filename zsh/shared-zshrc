@@ -28,6 +28,7 @@ alias gcane='git commit --amend --no-edit'
 alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
 alias jspp="python -m'json.tool'" # JSON pretty print - pipe or redirect into
 alias daws="docker run --rm -it amazon/aws-cli" # Quick docker-based AWS CLI
+alias ct="ctags -R ."
 
 # Utility functions
 

@@ -23,3 +23,6 @@ vnoremap Y "+y
 
 " Newline-ify a ', '-separated list
 nnoremap \,, :s/, /,\r/g<CR>='.:noh<CR>
+
+" Quick macros with Q
+nnoremap Q @q
