@@ -134,7 +134,7 @@ call denite#custom#var('file/rec', 'command',
 nnoremap <silent> <C-p> :<C-u>Denite
   \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 
-" Ripgrep command on grep source
+" Ripgrep command on grep source - add '-m1' for single-result
 call denite#custom#var('grep', 'command',
   \[
     \ 'rg',
@@ -169,7 +169,7 @@ let g:user_emmet_install_global = 0 "Enable only for HTML/CSS #1
 
 augroup FileTypeActions
   autocmd!
-  autocmd FileType html,css,less,html.twig EmmetInstall "Enable only for HTML/CSS/Twig #2
+  autocmd FileType html,css,less,html,twig,js,jsx EmmetInstall "Enable only for HTML/CSS/JSX/Twig #2
 augroup END
 
 " --- Deoplete ---

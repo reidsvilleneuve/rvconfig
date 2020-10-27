@@ -155,6 +155,9 @@ nnoremap <PageDown> <nop>
 " Write as superuser in case `sudo` is forgotten
 cnoremap w!! w !sudo tee > /dev/null %
 
+" Generate ctags
+nnoremap \\t :!ctags -R .<CR>
+
 " --- Snippits ---
 
 function! SetSnippit(mapping, file, action)
@@ -171,7 +174,7 @@ call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 
 " JavaScript
 call SetSnippit("fun", "js-function.js", "f{=a{t(i")
-call SetSnippit("cl", "js-console-log.js", "==f'a")
+call SetSnippit("cl", "js-console-log.js", "==2f'i")
 call SetSnippit("td", "js-todo-rvdev-comment.js", "==A")
 
 " --- Automatic commands ---

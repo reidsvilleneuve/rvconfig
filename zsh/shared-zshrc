@@ -1,10 +1,13 @@
 # Env vars
+
 IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
 set -o ignoreeof  # In case above command doesn't work
 ZSH_THEME=""
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git vi-mode tmux docker sbt aws)
+
+export PATH="$HOME/rvconfig/bin:$PATH"
 export KEYTIMEOUT=2
 export EDITOR=vim
 export VISUAL=vim

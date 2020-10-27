@@ -9,6 +9,7 @@
 --exclude=Gruntfile.js
 --exclude=gulp
 --exclude=node_modules
+--exclude=build
 
 # --langdef=typescript
 # --langmap=typescript:.ts
