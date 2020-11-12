@@ -13,3 +13,6 @@ tags
 
 # OSX
 .DS_Store
+
+# NVM
+.nvmrc

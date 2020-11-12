@@ -67,6 +67,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('OmniSharp/omnisharp-vim') " C# IDE-like capabilities
   call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
+  call dein#add('rhysd/reply.vim.git') " REPL integration
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
   call dein#add('Shougo/denite.nvim') " Fuzzy finding
@@ -198,6 +199,13 @@ colorscheme gruvbox
 " --- Fugitive ---
 
 nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name coped to system clipboard"<cr>
+
+" --- Reply ---
+
+nnoremap <silent> \rR :Repl<CR>
+vnoremap <silent> \rs :ReplSend<CR>
+nnoremap <silent> \rs :ReplSend<CR>
+nnoremap <silent> \rv :ReplRecv<CR>
 
 " --- Polyglot ---
 
