@@ -203,7 +203,7 @@ nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name co
 " --- Reply ---
 
 nnoremap <silent> \rR :Repl<CR>
-vnoremap <silent> \rs :ReplSend<CR>
+vnoremap <silent> \rs :'<,'>ReplSend<CR>
 nnoremap <silent> \rs :ReplSend<CR>
 nnoremap <silent> \rv :ReplRecv<CR>
 
