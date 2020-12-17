@@ -1,4 +1,7 @@
-Source the Linux or OSX rc in this directory in ~/.zshrc. Don't symlink - system-specific setup should be done there (Additionally, many installation scripts automatically add entries to ~.zshrc, and that proves to be difficult to maintain when these changes find themselves in the VCS file.
+Source the Linux or OSX rc in this directory in ~/.zshrc. Don't symlink -
+system-specific setup should be done there. Additionally, many installation
+scripts automatically add entries to ~.zshrc, and that proves to be difficult
+to maintain when these changes find themselves in the VCS file.
 
 An example system ~/.zshrc for linux:
 

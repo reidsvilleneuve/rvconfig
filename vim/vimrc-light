@@ -27,6 +27,9 @@ nnoremap \r :%s/\vpick (.*) (RVDEV_)(.*):/\L\3 \1 \U\2\3:<CR>
 nnoremap \m ggIRVDEV_FIXUP: <Esc>:startinsert!<CR>
 nnoremap \M ggIRVDEV_DROP: <Esc>:startinsert!<CR>
 
+" Quick grep
+nnoremap \f :grep! 
+
 " Stops <Esc> delay
 set ttimeoutlen=50
 
@@ -34,14 +37,17 @@ set ttimeoutlen=50
 " Provides tab-completion for all file-related tasks
 " Hit tab to :find by partial match
 " Use * to make it fuzzy
-set path+=**
+" Disabled -- see fuzzy finding section.
+" set path+=**
 
 " --- Colors ---
+set background=dark
 try
   " To keep things simple, this colorscheme is kept in this repo. Update at:
   " https://github.com/blueshirts/darcula
   " TODO: If blueshirts starts updating this commonly, make this a git submodule to decrease maintenance
-  colo darcula
+  "colo darcula
+  colo PaperColor
 catch /^Vim\%((\a\+)\)\=:E185/
   colo industry
 endtry
@@ -58,3 +64,36 @@ endif
 function! RvDev_SetForCronTab()
   set noswapfile backupcopy=yes backupdir=''
 endfunction
+
+" -- Fuzzy Finding
+
+" From https://github.com/jhawthorn/fzy#use-with-vim
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+nnoremap <silent> <C-p> :call FzyCommand("rg -l --color never .", ":e")<cr>
+
+" -- Quickfix --
+
+" Open quickfix automatically
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l* lwindow
+augroup END
+
+" -- Makeprg --
+
+augroup makeprgs
+  autocmd!
+  autocmd FileType javascript,typescriptreact,typescript,javascriptreact setlocal makeprg=node_modules/.bin/eslint\ --format\ unix\ %
+augroup end

@@ -35,7 +35,6 @@ function! GitMessageBody(storyPrefix)
   execute "normal ggIJIRA Story: \<Esc>gg2O\<Esc>gg" | startinsert!
 endfunction
 
-
 function! GitMessageBodyMultipleStories(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line

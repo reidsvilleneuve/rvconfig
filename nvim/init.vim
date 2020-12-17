@@ -58,11 +58,9 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('dense-analysis/ale.git') " Multi-language linting
   call dein#add('editorconfig/editorconfig-vim.git') " Editorconfig functionality
-  call dein#add('flowtype/vim-flow.git') " Support for FB's Flow
   call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
   call dein#add('mattn/emmet-vim.git') " Emmet integration
-  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('morhetz/gruvbox.git') " Color theme
   call dein#add('OmniSharp/omnisharp-vim') " C# IDE-like capabilities
@@ -85,6 +83,8 @@ if dein#load_state('~/.nvimpkg')
   " Disabled for testing:
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
+  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
+  " call dein#add('flowtype/vim-flow.git') " Support for FB's Flow
 
   call dein#end()
   call dein#save_state()
@@ -230,6 +230,8 @@ set completeopt-=preview
 " --- ALE ---
 
 nnoremap \af :ALEFix<cr>
+nnoremap \gt :ALEGoToDefinition<cr>
+nnorem \ca  :ALECodeAction<cr>
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
 
