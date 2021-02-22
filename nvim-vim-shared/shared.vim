@@ -157,24 +157,36 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Generate ctags
 nnoremap \\t :!ctags -R .<CR>
 
-" --- Snippits ---
+" Insert / command mode movement options for small motions
+" Use normal mode / ctrl + o / command-line-window (ctrl + f) otherwise.
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
 
-function! SetSnippit(mapping, file, action)
-  execute "nnoremap \\,".a:mapping." :-1read ~/rvconfig/nvim-vim-shared/snippits/".a:file."<CR>".a:action
+" --- Snippets ---
+
+function! SetSnippet(mapping, file, action)
+  " We use !cat to prevent snippet file loading due to previous-file jumps (<C-^>):
+  execute "nnoremap \\,".a:mapping." :-1read !cat ~/rvconfig/nvim-vim-shared/snippets/".a:file."<CR>".a:action
 endfunction
 
 " Jasmine
-call SetSnippit("des", "jasmine-describe.js", "f(=%2f'i")
-call SetSnippit("it", "jasmine-it.js", "f(=%2f'i")
-call SetSnippit("bfe", "jasmine-before-each.js", "f(=%o")
-call SetSnippit("ldes", "jasmine-describe-lambda.js", "f(=%f'a")
-call SetSnippit("lit", "jasmine-it-lambda.js", "f(=%2f'i")
-call SetSnippit("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
+call SetSnippet("des", "jasmine-describe.js", "f(=%2f'i")
+call SetSnippet("it", "jasmine-it.js", "f(=%2f'i")
+call SetSnippet("bfe", "jasmine-before-each.js", "f(=%o")
+call SetSnippet("ldes", "jasmine-describe-lambda.js", "f(=%f'a")
+call SetSnippet("lit", "jasmine-it-lambda.js", "f(=%2f'i")
+call SetSnippet("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 
 " JavaScript
-call SetSnippit("fun", "js-function.js", "f{=a{t(i")
-call SetSnippit("cl", "js-console-log.js", "==2f'i")
-call SetSnippit("td", "js-todo-rvdev-comment.js", "==A")
+call SetSnippet("fun", "js-function.js", "f{=a{t(i")
+call SetSnippet("cl", "js-console-log.js", "=kjf:la")
+call SetSnippet("td", "js-todo-rvdev-comment.js", "==A")
 
 " --- Automatic commands ---
 

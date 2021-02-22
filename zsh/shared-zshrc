@@ -22,7 +22,8 @@ alias gp-new='git push --set-upstream origin $(current_branch)'
 alias gtp='cd $RVDEV_PROJECT_ROOT'
 alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
 alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
-alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand'
+# `|| true` to stop nodemon from refusing to reset due to non-0 return value:
+alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand || true'
 alias rvdev-source-root='source ~/.zshrc'
 alias rvdev-source-local='source .rvdev/zshrc'
 alias tsd='tmux new-session -d -s'
@@ -32,6 +33,7 @@ alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
 alias jspp="python -m'json.tool'" # JSON pretty print - pipe or redirect into
 alias daws="docker run --rm -it amazon/aws-cli" # Quick docker-based AWS CLI
 alias ct="ctags -R ."
+alias rgfzy="rg -l . | fzy"
 
 # Utility functions
 

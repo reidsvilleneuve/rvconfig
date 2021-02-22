@@ -3,8 +3,10 @@
 import sys
 import json
 
+
 def get_json_value_from_string(json_string, key_to_get):
     return json.loads(json_string)[key_to_get]
+
 
 if __name__ == '__main__':
     print(get_json_value_from_string(sys.argv[1], sys.argv[2]))

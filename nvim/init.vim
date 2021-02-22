@@ -58,7 +58,6 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('dense-analysis/ale.git') " Multi-language linting
   call dein#add('editorconfig/editorconfig-vim.git') " Editorconfig functionality
-  call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
   call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
@@ -72,7 +71,7 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
   call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
-  call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
+  call dein#add('Shougo/neosnippet-snippets.git') " Snippets for neosnippet
   call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
@@ -80,11 +79,13 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('Yggdroot/indentLine.git') " Indentation guide lines
   call dein#add('zhaocai/vim-space.git') " Extra navigation options
 
-  " Disabled for testing:
+  " Disabled for testing -- ignore comments in this section:
   " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
   " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
   " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('flowtype/vim-flow.git') " Support for FB's Flow
+  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
+  " call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
 
   call dein#end()
   call dein#save_state()
@@ -188,7 +189,14 @@ function! s:check_back_space() abort
 endfunction
 
 " TabNine completion
-call deoplete#custom#var('tabnine', { 'max_num_results': 5 })
+" Commented out for testing:
+" call deoplete#custom#var('tabnine', { 'max_num_results': 5 })
+
+" ALE integration
+" call deoplete#custom#option('sources', {
+"   \ '_': ['ale']
+" \})
+call deoplete#custom#source('ale', {})
 
 " --- Gruvbox theme ---
 
@@ -203,9 +211,12 @@ nnoremap <silent> \cb :let @+=fugitive#head()<cr>:echo "Current branch's name co
 " --- Reply ---
 
 nnoremap <silent> \rR :Repl<CR>
-vnoremap <silent> \rs :'<,'>ReplSend<CR>
 nnoremap <silent> \rs :ReplSend<CR>
+" Regular ranges (i.e. 0,$ReplSend) isn't working properly, so:
+nnoremap <silent> \rr ggVG:ReplSend<CR><C-o>
+nnoremap <silent> \rS :'m,.ReplSend<CR>
 nnoremap <silent> \rv :ReplRecv<CR>
+vnoremap <silent> \rs :'<,'>ReplSend<CR>
 
 " --- Polyglot ---
 
@@ -213,11 +224,12 @@ nnoremap <silent> \rv :ReplRecv<CR>
 let g:vim_markdown_conceal = 1
 let g:javascript_plugin_flow = 1
 
-" --- Neosnippits ---
+" --- Neosnippets ---
 
-let g:neosnippet#disable_runtime_snippets={ '_' : 1 }
-let g:neosnippet#enable_snipmate_compatibility=1
-let g:neosnippet#snippets_directory=$HOME.'/.nvimpkg/repos/github.com/honza/vim-snippets/snippets'
+" Disabled to test neosnippet builtins:
+" let g:neosnippet#disable_runtime_snippets={ '_' : 1 }
+" let g:neosnippet#enable_snipmate_compatibility=1
+" let g:neosnippet#snippets_directory=$HOME.'/.nvimpkg/repos/github.com/honza/vim-snippets/snippetss'
 
 imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
