@@ -9,7 +9,10 @@ alias copy="xclip -sel clip"
 # TODO: Find a different solution for this (Too much config loss)
 alias lvim='vim -u ~/rvconfig/vim/.vimrc-light'
 
-setxkbmap -option caps:swapcaps
+if [ -x "$(command -v setxkbmap)" ]; then
+  setxkbmap -option caps:swapcaps
+fi
+
 export TERM="xterm-256color"
 
 echo -- RvConfig Linux run commands complete.
