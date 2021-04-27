@@ -16,23 +16,31 @@ export RIPGREP_CONFIG_PATH="$HOME/rvconfig/ripgrep/ripgreprc"
 
 # Aliases
 
-alias npm-exec='PATH=$(npm bin):$PATH'
-alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
-alias gp-new='git push --set-upstream origin $(current_branch)'
-alias gtp='cd $RVDEV_PROJECT_ROOT'
-alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
-alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
-# `|| true` to stop nodemon from refusing to reset due to non-0 return value:
-alias debug-jest-watch='nodemon --inspect-brk node_modules/.bin/jest --runInBand || true'
-alias rvdev-source-root='source ~/.zshrc'
-alias rvdev-source-local='source .rvdev/zshrc'
-alias tsd='tmux new-session -d -s'
-alias gs='git show'
-alias gcane='git commit --amend --no-edit'
-alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
-alias jspp="python -m'json.tool'" # JSON pretty print - pipe or redirect into
-alias daws="docker run --rm -it amazon/aws-cli" # Quick docker-based AWS CLI
+# Ctags
 alias ct="ctags -R ."
+# Docker
+alias daws="docker run --rm -it amazon/aws-cli" # Quick docker-based AWS CLI
+# Git
+alias _hard-gl='git fetch && git reset --hard origin/$(current_branch)'
+alias gcane='git commit --amend --no-edit'
+alias gco='echo Use git switch / reset' # This doesn't work -- zsh 
+alias gs='git show'
+alias gsw='git switch'
+alias grs='git restore'
+alias rvdev-remove-diff-orig="gst | grep '\.orig$' | xargs rm"
+# Node
+alias debug-jest-watch='node --inspect-brk node_modules/.bin/jest --runInBand --watch'
+alias debug-jest='node --inspect-brk node_modules/.bin/jest --runInBand'
+alias npm-exec='PATH=$(npm bin):$PATH'
+# Terminal
+alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+alias gtp='cd $RVDEV_PROJECT_ROOT'
+alias srcl='source .rvdev/zshrc'
+alias srcr='source ~/.zshrc'
+# Tmux
+alias tsd='tmux new-session -d -s'
+# Utilities
+alias jspp="python -m'json.tool'" # JSON pretty print - pipe or redirect into
 alias rgfzy="rg -l . | fzy"
 
 # Utility functions

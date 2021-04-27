@@ -4,4 +4,8 @@ source ~/rvconfig/zsh/shared-zshrc
 # I generally use Alacritty. This is provided for portability:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# TODO(RVDEV): Get this working without echo:
+# alias rvdev-w="echo \"xargs -I% ex % +'norm @w' +'wq'\" | pbcopy"
+# alias rvdev-w="xargs -I% echo ex % +'norm @w' +'wq' "
+
 echo -- RvConfig OSX run commands complete.

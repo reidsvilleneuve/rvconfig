@@ -20,7 +20,7 @@ endfunction
 function! GitMessageHeader(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
-" TODO: Move this single-line formatting to separate function:
+  " TODO: Move this single-line formatting to separate function:
   execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
   " Insert mode with : and space at end of line
   execute 'normal A: ' | startinsert!
@@ -29,7 +29,7 @@ endfunction
 function! GitMessageBody(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
-" TODO: Move this this single-line formatting to separate function:
+  " TODO: Move this this single-line formatting to separate function:
   execute 's/-'.a:storyPrefix.'/, '.a:storyPrefix.'/ge'
   " Insert header and add new lines at top of the file
   execute "normal ggIJIRA Story: \<Esc>gg2O\<Esc>gg" | startinsert!
@@ -38,7 +38,7 @@ endfunction
 function! GitMessageBodyMultipleStories(storyPrefix)
   execute InsertStoryText(a:storyPrefix)
   " Parse story text line
-" TODO: Move this multi-line formatting to separate function:
+  " TODO: Move this multi-line formatting to separate function:
   execute 's/-'.a:storyPrefix.'/\r'.a:storyPrefix.'/ge'
   " Insert header and add new lines at top of the file
   execute "normal ggOJIRA Stories:\<CR>\<Esc>gg2O\<Esc>gg" | startinsert!
@@ -48,7 +48,6 @@ endfunction
 
 " Tabs / two spaces toggle
 let g:rvdev_tab_stops=2
-
 execute "set shiftwidth=".g:rvdev_tab_stops
 execute "set softtabstop=".g:rvdev_tab_stops
 execute "set tabstop=".g:rvdev_tab_stops
@@ -76,6 +75,63 @@ function! TabToggle()
     call SetToSpaces()
   endif
 endfunction
+
+" https://gist.github.com/PeterRincker/582ea9be24a69e6dd8e237eb877b8978
+"  -- I might end up using https://github.com/inkarkat/vim-AdvancedSorters
+"     instead
+" :[range]SortGroup[!] [n|f|o|b|x] /{pattern}/
+" e.g. :SortGroup /^header/
+" e.g. :SortGroup n /^header/
+" See :h :sort for details
+
+function! s:sort_by_header(bang, pat) range
+  let pat = a:pat
+  let opts = ""
+  if pat =~ '^\s*[nfxbo]\s'
+    let opts = matchstr(pat, '^\s*\zs[nfxbo]')
+    let pat = matchstr(pat, '^\s*[nfxbo]\s*\zs.*')
+  endif
+  let pat = substitute(pat, '^\s*', '', '')
+  let pat = substitute(pat, '\s*$', '', '')
+  let sep = '/'
+  if len(pat) > 0 && pat[0] == matchstr(pat, '.$') && pat[0] =~ '\W'
+    let [sep, pat] = [pat[0], pat[1:-2]]
+  endif
+  if pat == ''
+    let pat = @/
+  endif
+
+  let ranges = []
+  execute a:firstline . ',' . a:lastline . 'g' . sep . pat . sep . 'call add(ranges, line("."))'
+
+  let converters = {
+        \ 'n': {s-> str2nr(matchstr(s, '-\?\d\+.*'))},
+        \ 'x': {s-> str2nr(matchstr(s, '-\?\%(0[xX]\)\?\x\+.*'), 16)},
+        \ 'o': {s-> str2nr(matchstr(s, '-\?\%(0\)\?\x\+.*'), 8)},
+        \ 'b': {s-> str2nr(matchstr(s, '-\?\%(0[bB]\)\?\x\+.*'), 2)},
+        \ 'f': {s-> str2float(matchstr(s, '-\?\d\+.*'))},
+        \ }
+  let arr = []
+  for i in range(len(ranges))
+    let end = max([get(ranges, i+1, a:lastline+1) - 1, ranges[i]])
+    let line = getline(ranges[i])
+    let d = {}
+    let d.key = call(get(converters, opts, {s->s}), [strpart(line, match(line, pat))])
+    let d.group = getline(ranges[i], end)
+    call add(arr, d)
+  endfor
+  call sort(arr, {a,b -> a.key == b.key ? 0 : (a.key < b.key ? -1 : 1)})
+  if a:bang
+    call reverse(arr)
+  endif
+  let lines = []
+  call map(arr, 'extend(lines, v:val.group)')
+  let start = max([a:firstline, get(ranges, 0, 0)])
+  call setline(start, lines)
+  call setpos("'[", start)
+  call setpos("']", start+len(lines)-1)
+endfunction
+command! -range=% -bang -nargs=+ SortGroup <line1>,<line2>call <SID>sort_by_header(<bang>0, <q-args>)
 
 nnoremap <F9> mz:execute TabToggle()<CR>'z
 
@@ -146,6 +202,7 @@ nnoremap \X :!code -g <C-r>=expand('%:p')<CR>:<C-r>=line('.')<CR>:<C-r>=col('.')
 
 " Newline-ify a ', '-separated list
 nnoremap \,, :s/, /,\r/g<CR>='.:noh<CR>
+nnoremap \\,, %i<CR><Esc>%a<CR><Esc>:s/, /,\r/g<CR>='.:noh<CR>k%kA
 
 " Disable Page Up / Down
 nnoremap <PageUp> <nop>
@@ -183,10 +240,11 @@ call SetSnippet("ldes", "jasmine-describe-lambda.js", "f(=%f'a")
 call SetSnippet("lit", "jasmine-it-lambda.js", "f(=%2f'i")
 call SetSnippet("lbfe", "jasmine-before-each-lambda.js", "f(=%f(o")
 
-" JavaScript
+" JavaScript / Typescript
 call SetSnippet("fun", "js-function.js", "f{=a{t(i")
 call SetSnippet("cl", "js-console-log.js", "=kjf:la")
 call SetSnippet("td", "js-todo-rvdev-comment.js", "==A")
+call SetSnippet("tl", "js-rxjs-tap-log.ts", "=%jjf:la")
 
 " --- Automatic commands ---
 
@@ -205,10 +263,13 @@ function! LoadProjectVimrc()
   endif
 endfunction
 
+let g:rvdev_first_col_highlight=80
+let g:rvdev_second_col_highlight=120
+
 " TODO: Combine these functions:
 function! WindowEnterHighlight()
   set cursorline
-  set colorcolumn=80,120
+  execute "set colorcolumn=".g:rvdev_first_col_highlight.",".g:rvdev_second_col_highlight
 endfunction
 
 function! WindowLeaveHighlight()

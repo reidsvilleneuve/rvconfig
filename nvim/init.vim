@@ -27,7 +27,8 @@ function! RVDEV_SortTypescriptImports()
   execute "normal 'bV/'@\<CR>kd'npO"
 endfunction
 
-nnoremap \o :call RVDEV_SortTypescriptImports()<CR>
+" Commented out in favor of :ALEOrganizeImports
+" nnoremap \o :call RVDEV_SortTypescriptImports()<CR>
 
 " Persistent undo
 
@@ -243,7 +244,11 @@ set completeopt-=preview
 
 nnoremap \af :ALEFix<cr>
 nnoremap \gt :ALEGoToDefinition<cr>
-nnorem \ca  :ALECodeAction<cr>
+nnoremap \ca :ALECodeAction<cr>
+nnoremap \ho :ALEHover<cr>
+nnoremap \dt :ALEDetail<cr>
+nnoremap \rn :ALERename<cr>
+
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
 
