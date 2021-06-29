@@ -59,20 +59,15 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('ConradIrwin/vim-bracketed-paste.git') " Allows for OS pasting without :set paste
   call dein#add('dense-analysis/ale.git') " Multi-language linting
   call dein#add('editorconfig/editorconfig-vim.git') " Editorconfig functionality
-  call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
   call dein#add('mattn/emmet-vim.git') " Emmet integration
   call dein#add('michaeljsmith/vim-indent-object.git') " Indentation text objects
   call dein#add('morhetz/gruvbox.git') " Color theme
-  call dein#add('OmniSharp/omnisharp-vim') " C# IDE-like capabilities
-  call dein#add('rbgrouleff/bclose.vim.git') " Close buffer without closing window - :Bclose
   call dein#add('rhysd/reply.vim.git') " REPL integration
   call dein#add('sheerun/vim-polyglot.git') " Multi-language syntax highlighting
   call dein#add('Shougo/context_filetype.vim.git') " Deoplete utility
   call dein#add('Shougo/denite.nvim') " Fuzzy finding
   call dein#add('Shougo/deoplete.nvim') " Autocomplete
   call dein#add('Shougo/neoinclude.vim.git') " Deoplete utility
-  call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
-  call dein#add('Shougo/neosnippet-snippets.git') " Snippets for neosnippet
   call dein#add('tpope/vim-commentary.git') " gc* to comment out lines
   call dein#add('tpope/vim-fugitive.git') " Git integration
   call dein#add('tpope/vim-repeat.git') " Better '.' functionality
@@ -81,12 +76,16 @@ if dein#load_state('~/.nvimpkg')
   call dein#add('zhaocai/vim-space.git') " Extra navigation options
 
   " Disabled for testing -- ignore comments in this section:
-  " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
-  " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
-  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   " call dein#add('flowtype/vim-flow.git') " Support for FB's Flow
-  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
+  " call dein#add('Galooshi/vim-import-js.git') " Automatic import statements
   " call dein#add('honza/vim-snippets.git') " Snippets (Engine below)
+  " call dein#add('kristijanhusak/vim-js-file-import', {'build': 'npm install'}) " Ctags-based Automatic import statements
+  " call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
+  " call dein#add('NLKNguyen/papercolor-theme.git') " Colors
+  " call dein#add('OmniSharp/omnisharp-vim') " C# IDE-like capabilities
+  " call dein#add('Shougo/neosnippet-snippets.git') " Snippets for neosnippet
+  " call dein#add('Shougo/neosnippet.vim.git') " Snippet engine
+  " call dein#add('tbodt/deoplete-tabnine', {'build': './install.sh'}) " Smart autocomplete
 
   call dein#end()
   call dein#save_state()
@@ -251,12 +250,13 @@ nnoremap \rn :ALERename<cr>
 
 " let g:ale_lint_delay = 1000
 set statusline+=\ E\:%{ale#statusline#Count(bufnr('')).total}
+let g:ale_hover_cursor = 0
 
 " --- IndentLine ---
 
-" Stop IndentLine from overwriting our concealcursor settings. This causes the
-" indent lines to not be visible on the current line (and also Visual
-" mode-selected lines). I find this to be worth it.
+" Stop IndentLine from overwriting our concealcursor settings, which causes the
+" indent lines to not be visible on the current line or Visual mode-selected
+" lines).
 let g:indentLine_setConceal = 0
 
 " --- Flow ---

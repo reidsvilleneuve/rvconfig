@@ -152,6 +152,9 @@ nnoremap \E :e <C-R>=expand(@+)<CR><CR>
 " Easier buffer switching
 nnoremap \bb :ls<CR>:b<space>
 
+" Close buffer and split
+nnoremap \bd :bd<CR><C-w>v
+
 " Buffer-only session save / load
 nnoremap <silent> \s :set sessionoptions=buffers<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> \l :so Session.vim<CR>:echo "Session loaded"<CR>
@@ -163,13 +166,14 @@ nnoremap \Q :'m,.norm@q<CR>
 nnoremap \\Q :g//norm @q<CR>
 vnoremap Q :'<,'>norm@q<CR>
 
-" Diff unsaved buffer with previously saved version
-nnoremap <silent> \d :w !diff % -<CR>
-
 " Quick range normal mode execution
 " Assume norm for visual mode, since range comes for free
 vnoremap \q :norm
 nnoremap \q :'m,.
+nnoremap \\q :'m,.g//norm @q<CR>
+
+" Diff unsaved buffer with previously saved version
+nnoremap <silent> \d :w !diff % -<CR>
 
 " Copy current various common texts to system clipboard
 nnoremap <silent> \cp :let @+=@%<CR>:echo "Current file's relative path copied to system clipboard"<CR>
@@ -344,7 +348,7 @@ if has('nvim-0.3.2') || has("patch-8.1.0360")
   set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
 
-" Use Syntax files for folding
-set foldmethod=syntax
-" Open files unfolded
-set foldlevelstart=20
+" Use Syntax files for folding -- disabled for performance testing
+" set foldmethod=syntax
+" " Open files unfolded
+" set foldlevelstart=20
